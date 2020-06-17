@@ -1,0 +1,19 @@
+item_name,item_description,item_price,item_category,item_vegan,item_glutenfree
+Demo restaurant,,,,,
+,,,Menu of the day (10€),,
+Chilli Gobi,Fresh cauliflower prepared with fresh herbs and chili peppers.,0,Starters,YES,YES
+Gobi Manchurian,Crispy cauliflower in savory Manchurian sauce.,0,Starters,YES,NO
+Sweet & Sour Vegetable,Fresh vegetables mixed with pineapples in a sweet and source sauce.,0,Main courses,YES,YES
+Lollipop Chicken Wings,,0,Main courses,YES,NO
+Ice Cream,"Chocolate, mint or lemon",0,Desserts,NO,YES
+Fruit of the season,,0,Desserts,NO,NO
+,,,House special,,
+Broccoli Chicken,Sliced chicken and broccoli in a tasty garlic sauce.,13,Chicken,NO,YES
+Sweet & Sour Chicken,Diced chicken breast lightly stir-fried with a tangy sweet and spice sauce,13.5,Chicken,NO,NO
+Manchurian Chicken,Tender pieces of chicken in a savory Manchurian sauce.,13,Chicken,NO,NO
+Basil Ginger Chicken,Stir-fried sliced chicken breast with basil and garlic sauce.,13,Chicken,NO,YES
+Hot Garlic Shrimp,Large gourmet shrimp in a spicy garlic sauce.,16,Shrimp,NO,NO
+Schezwan Shrimp,Gourmet shrimp sauteed with fresh vegetables in a savory schezwan sauce.,16.5,Shrimp,NO,NO
+Mango Lassi,Traditional cold and refreshing yogurt based drink made with mango pulp.,5,Beverages,NO,YES
+Poland Spring Water,,1.5,Beverages,NO,NO
+Soda,,2,Beverages,NO,NO

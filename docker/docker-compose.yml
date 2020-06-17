@@ -1,0 +1,23 @@
+version: '2.3'
+
+services:
+
+  csv2menu:
+    image: csv2menu
+    container_name: csv2menu
+    working_dir: /data
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    environment:
+      - PYTHONPATH=/data
+      - FLASK_ENV=development
+      - FLASK_APP=/data/src/app.py
+      - LC_ALL=C.UTF-8
+      - LANG=C.UTF-8
+    volumes:
+      - ../:/data
+    ports:
+      - "5000:5000"
+    # command: flask run
+    command: tail /dev/null -f
