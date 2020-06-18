@@ -49,6 +49,7 @@ def generate_menu():
 
         # Read Request Data: CSV in bytes
         data = request.data
+        restaurant_name = request.headers['restaurant_name']
 
         # Read file with Pandas
         df = pd.read_csv(io.BytesIO(data), encoding='utf8', sep=",")
@@ -59,17 +60,21 @@ def generate_menu():
         # Extract Categories
         categories = df['category'].unique().tolist()
         categories = [ c for c in categories if not c == '']
-        print(categories)
-        print(df['category'])
+
         # Extract all records
         raw_items = df.to_dict(orient='records')
+
         # Category to Items dictionary
         category_to_items = defaultdict(list)
+
+        # Only add item if at least it has category and name
         for item in raw_items:
             category = item['category']
             name = item['name']
             if not category == '' and not name == '':
                 category_to_items[category].append(item)
+
+        # Filter out those categories with no items
         for key, l in category_to_items.items():
             if not len(l) > 0:
                 del category_to_items[key]
@@ -77,10 +82,15 @@ def generate_menu():
         used_categories = []
         used_subcategories = []
 
-        # from pprint import pprint
-        # pprint(category_to_items)
+        
+        # Restaurant name
+        html += """
+            <div>
+                <h1> {} </h1>
+            </div>
+            """.format(restaurant_name)
 
-        for category in categories:
+        for category in category_to_items.keys():
 
             # Items
             items = category_to_items[category]
@@ -89,7 +99,6 @@ def generate_menu():
             category = escape(category)
 
             for item in items:
-
                 # Name
                 item_name = escape(item["name"])
 
@@ -98,16 +107,6 @@ def generate_menu():
 
                 # Subcategory
                 item_subcategory = escape(item["subcategory"])
-
-                # Restaurant Name
-                if category == '':
-
-                    # Add Heading
-                    html += """
-                        <div>
-                            <h1> {} </h1>
-                        </div>
-                        """.format(item_name)
 
                 # Menu Section
                 if item_category != '' and item_name != '' and category not in used_categories:
@@ -217,7 +216,7 @@ def generate_menu():
 def is_true(value):
     """ Is this value True? """
 
-    return value.lower() in [ 'yes', 'y', 'sí', 'si' ]
+    return value.lower() in [ 'yes', 'y', 'sí', 'si', 'oui']
 
 
 # If run in localhost
