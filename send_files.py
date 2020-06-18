@@ -1,6 +1,6 @@
 import requests
 
-filename = 'examples/menu.csv'
+filename = 'examples/menu_2.csv'
 headers = {'Content-Type': 'text/plain'}
 url = "http://localhost:5000/menu"
 

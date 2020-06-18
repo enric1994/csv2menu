@@ -26,6 +26,14 @@ html,body {
   margin: 20px 0;
   text-align: Center;
 }
+.menu-subsection-title {
+  font-family: georgia;
+  font-size: 1.8rem;
+  display: block;
+  font-weight:bold;
+  margin: 20px 0;
+  text-align: Center;
+}
 
 .menu-section-title-special {
   font-family: georgia;
@@ -65,6 +73,13 @@ html,body {
 }
 
 h1{
+  color: black;
+  font-weight: bold;
+  text-align: Center;
+  font-size: 3rem;
+}
+
+h3{
   color: black;
   font-weight: bold;
   text-align: Center;

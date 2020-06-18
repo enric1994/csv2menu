@@ -7,7 +7,7 @@ import pandas as pd
 from html import escape
 from flask import Flask, jsonify, request
 from bs4 import BeautifulSoup
-
+from collections import defaultdict
 
 # APP
 app = Flask(__name__)
@@ -23,7 +23,7 @@ OUTPUT_HTML = "/data/outputs/menu.html"
 @app.route('/menu', methods=['GET', 'POST'])
 def generate_menu():
     """ Generate Menu from CSV """
-    
+
     try:
 
         # Read CSS file
@@ -35,9 +35,9 @@ def generate_menu():
 
         # Start HTML output
         html = """
-            <!DOCTYPE html> 
-            <html lang="en"> 
-                <body> 
+            <!DOCTYPE html>
+            <html lang="en">
+                <body>
                 <style>
                     {}
                 </style>
@@ -57,19 +57,28 @@ def generate_menu():
         df = df.fillna('')
 
         # Extract Categories
-        categories = df['item_category'].unique().tolist()
-
+        categories = df['category'].unique().tolist()
+        categories = [ c for c in categories if not c == '']
+        print(categories)
+        print(df['category'])
         # Extract all records
         raw_items = df.to_dict(orient='records')
-
         # Category to Items dictionary
-        category_to_items = {}
+        category_to_items = defaultdict(list)
         for item in raw_items:
-            category = item["item_category"]
-            category_to_items.setdefault(category, [])
-            category_to_items[category].append(item)
+            category = item['category']
+            name = item['name']
+            if not category == '' and not name == '':
+                category_to_items[category].append(item)
+        for key, l in category_to_items.items():
+            if not len(l) > 0:
+                del category_to_items[key]
 
         used_categories = []
+        used_subcategories = []
+
+        # from pprint import pprint
+        # pprint(category_to_items)
 
         for category in categories:
 
@@ -82,10 +91,13 @@ def generate_menu():
             for item in items:
 
                 # Name
-                item_name = escape(item["item_name"])
+                item_name = escape(item["name"])
 
                 # Category
-                item_category = escape(item["item_category"])
+                item_category = escape(item["category"])
+
+                # Subcategory
+                item_subcategory = escape(item["subcategory"])
 
                 # Restaurant Name
                 if category == '':
@@ -101,41 +113,56 @@ def generate_menu():
                 if item_category != '' and item_name != '' and category not in used_categories:
 
                     # Add Heading 2
-                    html += """ 
-                        <div class="menu-section"> 
-                            <h2 class="menu-section-title"> {} </h2> 
-                        </div> 
+                    html += """
+                        <div class="menu-section">
+                            <h2 class="menu-section-title"> {} </h2>
+                        </div>
                         """.format(category)
 
                     used_categories.append(category)
+
+                # Subcategory
+                if item_subcategory != '' and item_name != '' and item_subcategory not in used_subcategories:
+
+                    # Add Heading 2
+                    html += """
+                        <div class="menu-section">
+                            <h3 class="menu-subsection-title"> {} </h3>
+                        </div>
+                        """.format(item_subcategory)
+
+                    used_subcategories.append(item_subcategory)
 
                 # Special Title
                 if item_name == '' and item_category != '':
 
                     # Add Heading 2
-                    html += """ 
-                    <div> 
-                        <h2 class="menu-section-title-special"> {} </h2> 
+                    html += """
+                    <div>
+                        <h2 class="menu-section-title-special"> {} </h2>
                     </div>""".format(
                         item_category
                     )
 
                 if item_category != '' and item_name != '':
-                    
+
                     # Price
-                    item_price = item["item_price"]
+                    item_price = item["price"]
                     # Convert to float if it is a number
-                    item_price = '{:.2f}'.format(float(item_price)) if item_price > 0 else ''
+                    if item_price.replace('.','',1).isdigit():
+                        item_price = '{:.2f}'.format(float(item_price)) if float(item_price) > 0 else ''
+                    else:
+                        item_price = ''
                     # Escape when it is a String
                     item_price = escape(item_price)
 
                     # Description
-                    item_description = escape(item["item_description"])
+                    item_description = escape(item["description"])
 
                     # Addons
-                    item_vegan = escape(item["item_vegan"])
-                    item_glutenfree = escape(item["item_glutenfree"])
-                    
+                    item_vegan = escape(item["vegan"])
+                    item_glutenfree = escape(item["allergy_gluten"])
+
                     # Addons for Description
                     desc_addons = []
                     if is_true(item_vegan):
@@ -156,6 +183,7 @@ def generate_menu():
                             item_price,
                             item_description
                         )
+            html += "<hr>"
 
         # Footer
         html += """</div>

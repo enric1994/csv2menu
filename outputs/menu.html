@@ -30,6 +30,14 @@
   margin: 20px 0;
   text-align: Center;
 }
+.menu-subsection-title {
+  font-family: georgia;
+  font-size: 1.8rem;
+  display: block;
+  font-weight:bold;
+  margin: 20px 0;
+  text-align: Center;
+}
 
 .menu-section-title-special {
   font-family: georgia;
@@ -75,6 +83,13 @@ h1{
   font-size: 3rem;
 }
 
+h3{
+  color: black;
+  font-weight: bold;
+  text-align: Center;
+  font-size: 3rem;
+}
+
 .footer {
   text-align: center;
   font-family: arial;
@@ -83,20 +98,15 @@ h1{
   </style>
   <meta content="text/html; charset=utf-8" http-equiv="Content-Type"/>
   <div class="menu-body">
-   <div>
-    <h1>
-     Demo restaurant
-    </h1>
-   </div>
-   <div>
-    <h2 class="menu-section-title-special">
-     Menu of the day (10€)
+   <div class="menu-section">
+    <h2 class="menu-section-title">
+     Menu of the day (10 euros)
     </h2>
    </div>
    <div class="menu-section">
-    <h2 class="menu-section-title">
-     Starters
-    </h2>
+    <h3 class="menu-subsection-title">
+     Starter
+    </h3>
    </div>
    <div class="menu-item">
     <div class="menu-item-name">
@@ -105,7 +115,7 @@ h1{
     <div class="menu-item-price">
     </div>
     <div class="menu-item-description">
-     Fresh cauliflower prepared with fresh herbs and chili peppers. (Vegan, Gluten-Free)
+     Fresh cauliflower prepared with fresh herbs and chili peppers. (Vegan)
     </div>
    </div>
    <div class="menu-item">
@@ -115,13 +125,13 @@ h1{
     <div class="menu-item-price">
     </div>
     <div class="menu-item-description">
-     Crispy cauliflower in savory Manchurian sauce. (Vegan)
+     Crispy cauliflower in savory Manchurian sauce. (Gluten-Free)
     </div>
    </div>
    <div class="menu-section">
-    <h2 class="menu-section-title">
-     Main courses
-    </h2>
+    <h3 class="menu-subsection-title">
+     Main course
+    </h3>
    </div>
    <div class="menu-item">
     <div class="menu-item-name">
@@ -130,7 +140,7 @@ h1{
     <div class="menu-item-price">
     </div>
     <div class="menu-item-description">
-     Fresh vegetables mixed with pineapples in a sweet and source sauce. (Vegan, Gluten-Free)
+     Fresh vegetables mixed with pineapples in a sweet and source sauce. (Vegan)
     </div>
    </div>
    <div class="menu-item">
@@ -140,13 +150,12 @@ h1{
     <div class="menu-item-price">
     </div>
     <div class="menu-item-description">
-     (Vegan)
     </div>
    </div>
    <div class="menu-section">
-    <h2 class="menu-section-title">
-     Desserts
-    </h2>
+    <h3 class="menu-subsection-title">
+     Dessert
+    </h3>
    </div>
    <div class="menu-item">
     <div class="menu-item-name">
@@ -155,7 +164,7 @@ h1{
     <div class="menu-item-price">
     </div>
     <div class="menu-item-description">
-     Chocolate, mint or lemon (Gluten-Free)
+     Chocolate, mint or lemon
     </div>
    </div>
    <div class="menu-item">
@@ -167,15 +176,16 @@ h1{
     <div class="menu-item-description">
     </div>
    </div>
-   <div>
-    <h2 class="menu-section-title-special">
-     House special
+   <hr/>
+   <div class="menu-section">
+    <h2 class="menu-section-title">
+     House Special
     </h2>
    </div>
    <div class="menu-section">
-    <h2 class="menu-section-title">
+    <h3 class="menu-subsection-title">
      Chicken
-    </h2>
+    </h3>
    </div>
    <div class="menu-item">
     <div class="menu-item-name">
@@ -185,7 +195,7 @@ h1{
      13.00
     </div>
     <div class="menu-item-description">
-     Sliced chicken and broccoli in a tasty garlic sauce. (Gluten-Free)
+     Sliced chicken and broccoli in a tasty garlic sauce.
     </div>
    </div>
    <div class="menu-item">
@@ -218,13 +228,13 @@ h1{
      13.00
     </div>
     <div class="menu-item-description">
-     Stir-fried sliced chicken breast with basil and garlic sauce. (Gluten-Free)
+     Stir-fried sliced chicken breast with basil and garlic sauce.
     </div>
    </div>
    <div class="menu-section">
-    <h2 class="menu-section-title">
+    <h3 class="menu-subsection-title">
      Shrimp
-    </h2>
+    </h3>
    </div>
    <div class="menu-item">
     <div class="menu-item-name">
@@ -248,6 +258,8 @@ h1{
      Gourmet shrimp sauteed with fresh vegetables in a savory schezwan sauce.
     </div>
    </div>
+   <hr/>
+   <hr/>
    <div class="menu-section">
     <h2 class="menu-section-title">
      Beverages
@@ -261,7 +273,7 @@ h1{
      5.00
     </div>
     <div class="menu-item-description">
-     Traditional cold and refreshing yogurt based drink made with mango pulp. (Gluten-Free)
+     Traditional cold and refreshing yogurt based drink made with mango pulp.
     </div>
    </div>
    <div class="menu-item">
@@ -284,6 +296,7 @@ h1{
     <div class="menu-item-description">
     </div>
    </div>
+   <hr/>
   </div>
   <div class="footer">
    Menu made using
