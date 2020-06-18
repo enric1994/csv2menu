@@ -56,6 +56,13 @@ html,body {
   font-weight: bold;
   border-bottom: 1.7px dotted rgb(213, 213, 213);
   margin-right: 4.5rem;
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
 
 .menu-item-description {
@@ -93,7 +100,7 @@ h3{
 }
 
 
-/* The actual popup
+/* The actual popup */
 .menu-item-name .popuptext {
   visibility: hidden;
   width: 160px;

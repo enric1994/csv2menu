@@ -82,7 +82,6 @@ def generate_menu():
         used_categories = []
         used_subcategories = []
 
-        
         # Restaurant name
         html += """
             <div>
@@ -172,10 +171,13 @@ def generate_menu():
                         item_description += " (" + ', '.join(desc_addons) + ")"
 
                     html += """
-                        <div class="menu-item">
-                            <div class="menu-item-name"> {} </div>
+                        <div class="menu-item" >
+                            <div class="menu-item-name" onclick="showMore()"> {}
+                            <span class="popuptext" id="item_popup">Allergens icons...</span>
+                            </div>
                             <div class="menu-item-price"> {} </div>
                             <div class="menu-item-description"> {} </div>
+
                         </div>
                         """.format(
                             item_name,
@@ -183,6 +185,14 @@ def generate_menu():
                             item_description
                         )
             html += "<hr>"
+
+        # Scripts
+        html += """<script>
+            function showMore() {
+              var popup = document.getElementById("item_popup");
+              popup.classList.toggle("show");
+            }
+            </script>"""
 
         # Footer
         html += """</div>

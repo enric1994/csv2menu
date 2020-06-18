@@ -60,6 +60,13 @@
   font-weight: bold;
   border-bottom: 1.7px dotted rgb(213, 213, 213);
   margin-right: 4.5rem;
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
 
 .menu-item-description {
@@ -97,7 +104,7 @@ h3{
 }
 
 
-/* The actual popup
+/* The actual popup */
 .menu-item-name .popuptext {
   visibility: hidden;
   width: 160px;
@@ -161,8 +168,11 @@ h3{
     </h3>
    </div>
    <div class="menu-item">
-    <div class="menu-item-name">
+    <div class="menu-item-name" onclick="showMore()">
      Chilli Gobi
+     <span class="popuptext" id="item_popup">
+      Allergens icons...
+     </span>
     </div>
     <div class="menu-item-price">
     </div>
@@ -171,8 +181,11 @@ h3{
     </div>
    </div>
    <div class="menu-item">
-    <div class="menu-item-name">
+    <div class="menu-item-name" onclick="showMore()">
      Gobi Manchurian
+     <span class="popuptext" id="item_popup">
+      Allergens icons...
+     </span>
     </div>
     <div class="menu-item-price">
     </div>
@@ -186,8 +199,11 @@ h3{
     </h3>
    </div>
    <div class="menu-item">
-    <div class="menu-item-name">
+    <div class="menu-item-name" onclick="showMore()">
      Sweet &amp; Sour Vegetable
+     <span class="popuptext" id="item_popup">
+      Allergens icons...
+     </span>
     </div>
     <div class="menu-item-price">
     </div>
@@ -196,8 +212,11 @@ h3{
     </div>
    </div>
    <div class="menu-item">
-    <div class="menu-item-name">
+    <div class="menu-item-name" onclick="showMore()">
      Lollipop Chicken Wings
+     <span class="popuptext" id="item_popup">
+      Allergens icons...
+     </span>
     </div>
     <div class="menu-item-price">
     </div>
@@ -210,8 +229,11 @@ h3{
     </h3>
    </div>
    <div class="menu-item">
-    <div class="menu-item-name">
+    <div class="menu-item-name" onclick="showMore()">
      Ice Cream
+     <span class="popuptext" id="item_popup">
+      Allergens icons...
+     </span>
     </div>
     <div class="menu-item-price">
     </div>
@@ -220,8 +242,11 @@ h3{
     </div>
    </div>
    <div class="menu-item">
-    <div class="menu-item-name">
+    <div class="menu-item-name" onclick="showMore()">
      Fruit of the season
+     <span class="popuptext" id="item_popup">
+      Allergens icons...
+     </span>
     </div>
     <div class="menu-item-price">
     </div>
@@ -240,8 +265,11 @@ h3{
     </h3>
    </div>
    <div class="menu-item">
-    <div class="menu-item-name">
+    <div class="menu-item-name" onclick="showMore()">
      Broccoli Chicken
+     <span class="popuptext" id="item_popup">
+      Allergens icons...
+     </span>
     </div>
     <div class="menu-item-price">
      13.00
@@ -251,8 +279,11 @@ h3{
     </div>
    </div>
    <div class="menu-item">
-    <div class="menu-item-name">
+    <div class="menu-item-name" onclick="showMore()">
      Sweet &amp; Sour Chicken
+     <span class="popuptext" id="item_popup">
+      Allergens icons...
+     </span>
     </div>
     <div class="menu-item-price">
      13.50
@@ -262,8 +293,11 @@ h3{
     </div>
    </div>
    <div class="menu-item">
-    <div class="menu-item-name">
+    <div class="menu-item-name" onclick="showMore()">
      Manchurian Chicken
+     <span class="popuptext" id="item_popup">
+      Allergens icons...
+     </span>
     </div>
     <div class="menu-item-price">
      13.00
@@ -273,8 +307,11 @@ h3{
     </div>
    </div>
    <div class="menu-item">
-    <div class="menu-item-name">
+    <div class="menu-item-name" onclick="showMore()">
      Basil Ginger Chicken
+     <span class="popuptext" id="item_popup">
+      Allergens icons...
+     </span>
     </div>
     <div class="menu-item-price">
      13.00
@@ -289,8 +326,11 @@ h3{
     </h3>
    </div>
    <div class="menu-item">
-    <div class="menu-item-name">
+    <div class="menu-item-name" onclick="showMore()">
      Hot Garlic Shrimp
+     <span class="popuptext" id="item_popup">
+      Allergens icons...
+     </span>
     </div>
     <div class="menu-item-price">
      16.00
@@ -300,8 +340,11 @@ h3{
     </div>
    </div>
    <div class="menu-item">
-    <div class="menu-item-name">
+    <div class="menu-item-name" onclick="showMore()">
      Schezwan Shrimp
+     <span class="popuptext" id="item_popup">
+      Allergens icons...
+     </span>
     </div>
     <div class="menu-item-price">
      16.50
@@ -317,8 +360,11 @@ h3{
     </h2>
    </div>
    <div class="menu-item">
-    <div class="menu-item-name">
+    <div class="menu-item-name" onclick="showMore()">
      Mango Lassi
+     <span class="popuptext" id="item_popup">
+      Allergens icons...
+     </span>
     </div>
     <div class="menu-item-price">
      5.00
@@ -328,8 +374,11 @@ h3{
     </div>
    </div>
    <div class="menu-item">
-    <div class="menu-item-name">
+    <div class="menu-item-name" onclick="showMore()">
      Poland Spring Water
+     <span class="popuptext" id="item_popup">
+      Allergens icons...
+     </span>
     </div>
     <div class="menu-item-price">
      1.50
@@ -338,8 +387,11 @@ h3{
     </div>
    </div>
    <div class="menu-item">
-    <div class="menu-item-name">
+    <div class="menu-item-name" onclick="showMore()">
      Soda
+     <span class="popuptext" id="item_popup">
+      Allergens icons...
+     </span>
     </div>
     <div class="menu-item-price">
      2.00
@@ -348,6 +400,12 @@ h3{
     </div>
    </div>
    <hr/>
+   <script>
+    function showMore() {
+              var popup = document.getElementById("item_popup");
+              popup.classList.toggle("show");
+            }
+   </script>
   </div>
   <div class="footer">
    Menu made using
