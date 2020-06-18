@@ -1,107 +1,198 @@
+# imports
+import os
 import io
 import sys
 import csv
-
 import pandas as pd
 from html import escape
 from flask import Flask, jsonify, request
 from bs4 import BeautifulSoup
 
+
+# APP
 app = Flask(__name__)
+app.config['SECRET_KEY'] = 'this is my secret key!'
+
+
+# Static path
+STATIC_PATH = os.path.abspath(os.path.join(os.path.dirname(os.path.abspath(__file__)), "static"))
+CSS_FILEPATH = os.path.join(STATIC_PATH, 'css', 'style.css')
+OUTPUT_HTML = "/data/outputs/menu.html"
+
 
 @app.route('/menu', methods=['GET', 'POST'])
 def generate_menu():
+    """ Generate Menu from CSV """
+    
     try:
-        css = open('./style.css').read()
 
-        data = request.data
-        df = pd.read_csv(io.BytesIO(data), encoding='utf8', sep=",")
-        df = df.fillna('')
-        categories = list(set(df['item_category'].to_list()))
-        rawItems = []
-        for index, row in df.iterrows():
-            rawItems.append(row.to_dict())
+        # Read CSS file
+        with open(CSS_FILEPATH) as f:
+            css = f.read()
 
-        category_list = dict()
-        for category in categories:
-            categoryItems = []
-            for item in rawItems:
-                itemCategory = item["item_category"]
-                if category == itemCategory:
-                    categoryItems.append(item)
-            category_list[category] = categoryItems
-
+        # Escape CSS
         css = escape(css)
 
-        html = "<style>" + css + "</style>"
-        html += '<meta http-equiv="Content-Type" content="text/html; charset=utf-8">'
-        html += "<div class=\"menu-body\">"
+        # Start HTML output
+        html = """
+            <!DOCTYPE html> 
+            <html lang="en"> 
+                <body> 
+                <style>
+                    {}
+                </style>
+                <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+                <div class="menu-body">
+            """.format(
+                css
+            )
+
+        # Read Request Data: CSV in bytes
+        data = request.data
+
+        # Read file with Pandas
+        df = pd.read_csv(io.BytesIO(data), encoding='utf8', sep=",")
+
+        # Fill NA with empty values
+        df = df.fillna('')
+
+        # Extract Categories
+        categories = df['item_category'].unique().tolist()
+
+        # Extract all records
+        raw_items = df.to_dict(orient='records')
+
+        # Category to Items dictionary
+        category_to_items = {}
+        for item in raw_items:
+            category = item["item_category"]
+            category_to_items.setdefault(category, [])
+            category_to_items[category].append(item)
 
         used_categories = []
 
         for category in categories:
-            print(category)
-            items = category_list[category]
+
+            # Items
+            items = category_to_items[category]
+
+            # Escape Category
             category = escape(category)
 
             for item in items:
-                print(item)
-                # Normal title (name and category)
-                if item["item_category"] != '' and item["item_name"] != '' and category not in used_categories:
-                    html+= "<div class=\"menu-section\"><h2 class=\"menu-section-title\">" + category + "</h2></div>"
+
+                # Name
+                item_name = escape(item["item_name"])
+
+                # Category
+                item_category = escape(item["item_category"])
+
+                # Restaurant Name
+                if category == '':
+
+                    # Add Heading
+                    html += """
+                        <div>
+                            <h1> {} </h1>
+                        </div>
+                        """.format(item_name)
+
+                # Menu Section
+                if item_category != '' and item_name != '' and category not in used_categories:
+
+                    # Add Heading 2
+                    html += """ 
+                        <div class="menu-section"> 
+                            <h2 class="menu-section-title"> {} </h2> 
+                        </div> 
+                        """.format(category)
+
                     used_categories.append(category)
 
-                if item["item_category"] != '' and item["item_name"] != '':
-                    description = item["item_description"]
-                    if item["item_vegan"] == "YES":
-                        description += "(Vegan)"
-                    if item["item_glutenfree"] == "YES":
-                        description += "(Gluten-Free)"
+                # Special Title
+                if item_name == '' and item_category != '':
 
-                    description = escape(description)
-                    item["item_name"] = escape(item["item_name"])
-                    item["item_price"] = escape(str(item["item_price"]))
+                    # Add Heading 2
+                    html += """ 
+                    <div> 
+                        <h2 class="menu-section-title-special"> {} </h2> 
+                    </div>""".format(
+                        item_category
+                    )
 
-                    html += "<div class=\"menu-item\">"
+                if item_category != '' and item_name != '':
+                    
+                    # Price
+                    item_price = item["item_price"]
+                    # Convert to float if it is a number
+                    item_price = '{:.2f}'.format(float(item_price)) if item_price > 0 else ''
+                    # Escape when it is a String
+                    item_price = escape(item_price)
 
-                    html += "<div class=\"menu-item-name\">" + item["item_name"] + "</div>"
+                    # Description
+                    item_description = escape(item["item_description"])
 
-                    if item["item_price"] == '0':
-                        html += "<div class=\"menu-item-price\"> </div>"
-                    else:
-                        html += "<div class=\"menu-item-price\">" + '%.2f' % float(item["item_price"]) + "</div>"
+                    # Addons
+                    item_vegan = escape(item["item_vegan"])
+                    item_glutenfree = escape(item["item_glutenfree"])
+                    
+                    # Addons for Description
+                    desc_addons = []
+                    if is_true(item_vegan):
+                        desc_addons.append("Vegan")
+                    if is_true(item_glutenfree):
+                        desc_addons.append("Gluten-Free")
+                    if len(desc_addons):
+                        item_description += " (" + ', '.join(desc_addons) + ")"
 
-                    html += "<div class=\"menu-item-description\">" + description + "</div>"
+                    html += """
+                        <div class="menu-item">
+                            <div class="menu-item-name"> {} </div>
+                            <div class="menu-item-price"> {} </div>
+                            <div class="menu-item-description"> {} </div>
+                        </div>
+                        """.format(
+                            item_name,
+                            item_price,
+                            item_description
+                        )
 
-                    html += "</div>"
+        # Footer
+        html += """</div>
+            <div class="footer">
+                Menu made using <a href=https://godigital.menu target='_blank'>godigital.menu</a>
+            </div>"""
 
-            # Restaurant name (only name)
-            if item["item_category"] == '':
-                html+= "<div><h1>" + item["item_name"] + "</h1></div>"
-
-            # Special title (only category)
-            if item["item_name"] == '' and item["item_category"] != '':
-                html+= "<div><h2 class=\"menu-section-title-special\">" + item["item_category"] + "</h2></div>"
-
-
-
-        html += "</div>"
-        html += "<div class='footer'>Menu made using <a href=https://godigital.menu target='_blank'>godigital.menu</a></div>"
-
+        # Parse HTML with BeautifulSoup
         soup = BeautifulSoup(html, "html.parser")
 
+        # Prettify it
         html = soup.prettify()
 
-        html_file = open("/data/src/test_menu.html", "w")
-        html_file.write(html)
-        html_file.close()
+        # Write it!
+        with open(OUTPUT_HTML, "w") as html_file:
+            html_file.write(html)
 
-        resp = jsonify(success=True)
-        return resp
+        # Hurray!
+        return jsonify(success=True)
+
     except Exception as e:
+
+        print('#' * 100)
         print('Excepction', e)
-        resp = jsonify(success=False)
-        return resp
+        print('#' * 100)
+
+        # Fail!
+        return jsonify(success=False)
 
 
-app.run(host='0.0.0.0', port=5000, debug=True)
+def is_true(value):
+    """ Is this value True? """
+
+    return value.lower() in [ 'yes', 'y', 'sí', 'si' ]
+
+
+# If run in localhost
+if __name__ == '__main__':
+
+    app.run(host='0.0.0.0', port=5000, debug=True)

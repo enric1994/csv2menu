@@ -1,0 +1,9 @@
+*.DS_Store
+*.pyc
+**/logs	
+**/.ipynb_checkpoints
+**/__pycache__
+**/env/
+**/.vscode/
+**/target/
+data/*
