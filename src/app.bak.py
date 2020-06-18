@@ -57,7 +57,7 @@ def generate_menu():
         df = df.fillna('')
 
         # Extract Categories
-        categories = df['category'].unique().tolist()
+        categories = df['item_category'].unique().tolist()
 
         # Extract all records
         raw_items = df.to_dict(orient='records')
@@ -65,7 +65,7 @@ def generate_menu():
         # Category to Items dictionary
         category_to_items = {}
         for item in raw_items:
-            category = item["category"]
+            category = item["item_category"]
             category_to_items.setdefault(category, [])
             category_to_items[category].append(item)
 
@@ -82,19 +82,10 @@ def generate_menu():
             for item in items:
 
                 # Name
-                item_name = escape(item["name"])
+                item_name = escape(item["item_name"])
 
                 # Category
-                item_category = escape(item["category"])
-
-                # Category
-                item_subcategory = escape(item["subcategory"])
-
-                # Comments
-                item_comments = escape(item["comments"])
-
-                # Calories
-                item_calories = escape(item["calories"])
+                item_category = escape(item["item_category"])
 
                 # Restaurant Name
                 if category == '':
@@ -132,54 +123,27 @@ def generate_menu():
                 if item_category != '' and item_name != '':
                     
                     # Price
-                    item_price = item["price"]
+                    item_price = item["item_price"]
                     # Convert to float if it is a number
                     item_price = '{:.2f}'.format(float(item_price)) if item_price > 0 else ''
                     # Escape when it is a String
                     item_price = escape(item_price)
 
                     # Description
-                    item_description = escape(item["description"])
+                    item_description = escape(item["item_description"])
 
-                    # Suitable For
-                    suitable = [
-                        ( escape(item["vegan"]), "Vegan" ),
-                        ( escape(item["vegetarian"]), "Vegetarian" ),
-                    ]
-
-                    # Add Suitable For
-                    desc_suitable = []
-                    for addon in suitable:
-                        if is_true(addon[0]):
-                            desc_suitable.append(addon[1])
-                    if len(desc_suitable):
-                        item_description += "\nSuitable for: " + ', '.join(desc_suitable) + ")"
-
-                    # Allergens
-                    allergens = [
-                        ( escape(item["allergy_gluten"]), "Gluten" ),
-                        ( escape(item["allergy_crustaceans"]), "Crustaceans" ),
-                        ( escape(item["allergy_eggs"]), "Eggs" ),
-                        ( escape(item["allergy_fish"]), "Fish" ),
-                        ( escape(item["allergy_peanuts"]), "Peanuts" ),
-                        ( escape(item["allergy_soybeans"]), "Soy" ),
-                        ( escape(item["allergy_milk"]), "Milk" ),
-                        ( escape(item["allergy_nuts"]), "Nuts" ),
-                        ( escape(item["allergy_celery"]), "Celery" ),
-                        ( escape(item["allergy_mustard"]), "Mustard" ),
-                        ( escape(item["allergy_sesame"]), "Sesame" ),
-                        ( escape(item["allergy_sulphites"]), "Sulphites" ),
-                        ( escape(item["allergy_lupin"]), "Lupin" ),
-                        ( escape(item["allergy_molluscs"]), "Molluscs" ),
-                    ]
+                    # Addons
+                    item_vegan = escape(item["item_vegan"])
+                    item_glutenfree = escape(item["item_glutenfree"])
                     
-                    # Add Allergens
-                    desc_allergens = []
-                    for addon in allergens:
-                        if is_true(addon[0]):
-                            desc_allergens.append(addon[1])
-                    if len(desc_allergens):
-                        item_description += "\nContains: " + ', '.join(desc_allergens) + ")"
+                    # Addons for Description
+                    desc_addons = []
+                    if is_true(item_vegan):
+                        desc_addons.append("Vegan")
+                    if is_true(item_glutenfree):
+                        desc_addons.append("Gluten-Free")
+                    if len(desc_addons):
+                        item_description += " (" + ', '.join(desc_addons) + ")"
 
                     html += """
                         <div class="menu-item">
