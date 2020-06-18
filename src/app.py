@@ -127,15 +127,19 @@ def generate_menu():
 
                     # Description
                     item_description = escape(item["item_description"])
+
+                    # Addons
+                    item_vegan = escape(item["item_vegan"])
+                    item_glutenfree = escape(item["item_glutenfree"])
                     
                     # Addons for Description
                     desc_addons = []
-                    if is_true(item["item_vegan"]):
+                    if is_true(item_vegan):
                         desc_addons.append("Vegan")
-                    if is_true(item["item_glutenfree"]):
+                    if is_true(item_glutenfree):
                         desc_addons.append("Gluten-Free")
                     if len(desc_addons):
-                        item_description += ', '.join(desc_addons)
+                        item_description += " (" + ', '.join(desc_addons) + ")"
 
                     html += """
                         <div class="menu-item">
@@ -179,7 +183,7 @@ def generate_menu():
 def is_true(value):
     """ Is this value True? """
 
-    value.lower() in [ 'yes', 'y', 'sí', 'si' ]
+    return value.lower() in [ 'yes', 'y', 'sí', 'si' ]
 
 
 # If run in localhost
