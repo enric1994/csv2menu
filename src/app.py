@@ -99,7 +99,7 @@ def generate_menu():
 
                 # Menu Section
                 if item_category != '' and item_name != '' and category not in used_categories:
-                    
+
                     # Add Heading 2
                     html += """ 
                         <div class="menu-section"> 
@@ -123,7 +123,11 @@ def generate_menu():
                 if item_category != '' and item_name != '':
                     
                     # Price
-                    item_price = escape(str(item["item_price"]))
+                    item_price = item["item_price"]
+                    # Convert to float if it is a number
+                    item_price = '{:.2f}'.format(float(item_price)) if item_price > 0 else ''
+                    # Escape when it is a String
+                    item_price = escape(item_price)
 
                     # Description
                     item_description = escape(item["item_description"])
@@ -144,12 +148,12 @@ def generate_menu():
                     html += """
                         <div class="menu-item">
                             <div class="menu-item-name"> {} </div>
-                            <div class="menu-item-price"> {:.2f} </div>
+                            <div class="menu-item-price"> {} </div>
                             <div class="menu-item-description"> {} </div>
                         </div>
                         """.format(
                             item_name,
-                            float(item_price),
+                            item_price,
                             item_description
                         )
 
@@ -174,7 +178,9 @@ def generate_menu():
 
     except Exception as e:
 
+        print('#' * 100)
         print('Excepction', e)
+        print('#' * 100)
 
         # Fail!
         return jsonify(success=False)
