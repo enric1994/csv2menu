@@ -173,7 +173,7 @@ def generate_menu():
                         if is_true(addon[0]):
                             desc_suitable.append(addon[1])
                     if len(desc_suitable):
-                        item_description += "\nSuitable for: " + ', '.join(desc_suitable) + ")"
+                        item_description += "\nSuitable for: " + ', '.join(desc_suitable)
 
                     # Allergens
                     allergens = [
@@ -199,7 +199,7 @@ def generate_menu():
                         if is_true(addon[0]):
                             desc_allergens.append(addon[1])
                     if len(desc_allergens):
-                        item_description += "\nContains: " + ', '.join(desc_allergens) + ")"
+                        item_description += "\nContains: " + ', '.join(desc_allergens)
 
                     # Comments: to be added
                     item_comments = escape(item["comments"])
