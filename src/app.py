@@ -168,10 +168,7 @@ def generate_menu():
                     ]
 
                     # Add Suitable For
-                    desc_suitable = []
-                    for addon in suitable:
-                        if is_true(addon[0]):
-                            desc_suitable.append(addon[1])
+                    desc_suitable = [ addon[1] for addon in suitable if is_true(addon[0]) ]
                     if len(desc_suitable):
                         item_description += "\nSuitable for: " + ', '.join(desc_suitable)
 
@@ -194,10 +191,7 @@ def generate_menu():
                     ]
 
                     # Add Allergens
-                    desc_allergens = []
-                    for addon in allergens:
-                        if is_true(addon[0]):
-                            desc_allergens.append(addon[1])
+                    desc_allergens = [ addon[1] for addon in allergens if is_true(addon[0]) ]
                     if len(desc_allergens):
                         item_description += "\nContains: " + ', '.join(desc_allergens)
 
