@@ -51,6 +51,13 @@ def generate_menu():
         data = request.data
         restaurant_name = request.headers['restaurant_name']
 
+        # Restaurant name
+        html += """
+            <div>
+                <h1> {} </h1>
+            </div>
+            """.format(restaurant_name)
+
         # Read file with Pandas
         df = pd.read_csv(io.BytesIO(data), encoding='utf8', sep=",")
 
@@ -79,16 +86,9 @@ def generate_menu():
             if not len(l) > 0:
                 del category_to_items[key]
 
-        used_categories = []
-        used_subcategories = []
-
-        
-        # Restaurant name
-        html += """
-            <div>
-                <h1> {} </h1>
-            </div>
-            """.format(restaurant_name)
+        # Track when categories and subcategories are added (not to repeat them)
+        used_categories = set()
+        used_subcategories = set()
 
         for category in category_to_items.keys():
 
@@ -99,6 +99,7 @@ def generate_menu():
             category = escape(category)
 
             for item in items:
+                
                 # Name
                 item_name = escape(item["name"])
 
@@ -108,8 +109,12 @@ def generate_menu():
                 # Subcategory
                 item_subcategory = escape(item["subcategory"])
 
+                # Valid category / subcategory
+                valid_category = item_category != '' and item_name != ''
+                valid_subcategory = item_subcategory != '' and item_name != ''
+
                 # Menu Section
-                if item_category != '' and item_name != '' and category not in used_categories:
+                if valid_category and category not in used_categories:
 
                     # Add Heading 2
                     html += """
@@ -118,10 +123,10 @@ def generate_menu():
                         </div>
                         """.format(category)
 
-                    used_categories.append(category)
+                    used_categories.add(category)
 
                 # Subcategory
-                if item_subcategory != '' and item_name != '' and item_subcategory not in used_subcategories:
+                if valid_subcategory and item_subcategory not in used_subcategories:
 
                     # Add Heading 2
                     html += """
@@ -130,25 +135,23 @@ def generate_menu():
                         </div>
                         """.format(item_subcategory)
 
-                    used_subcategories.append(item_subcategory)
+                    used_subcategories.add(item_subcategory)
+                
+                # Add item
+                if valid_category:
 
-                # Special Title
-                if item_name == '' and item_category != '':
-
-                    # Add Heading 2
-                    html += """
-                    <div>
-                        <h2 class="menu-section-title-special"> {} </h2>
-                    </div>""".format(
-                        item_category
-                    )
-
-                if item_category != '' and item_name != '':
+                    # # Special Title: Add Heading 2
+                    # html += """
+                    # <div>
+                    #     <h2 class="menu-section-title-special"> {} </h2>
+                    # </div>""".format(
+                    #     item_category
+                    # )
 
                     # Price
                     item_price = item["price"]
                     # Convert to float if it is a number
-                    if item_price.replace('.','',1).isdigit():
+                    if item_price.replace('.', '', 1).isdigit():
                         item_price = '{:.2f}'.format(float(item_price)) if float(item_price) > 0 else ''
                     else:
                         item_price = ''
@@ -182,6 +185,8 @@ def generate_menu():
                             item_price,
                             item_description
                         )
+            
+            # HTML thematic break
             html += "<hr>"
 
         # Footer
@@ -206,7 +211,7 @@ def generate_menu():
     except Exception as e:
 
         print('#' * 100)
-        print('Excepction', e)
+        print('Exception', e)
         print('#' * 100)
 
         # Fail!
@@ -216,7 +221,7 @@ def generate_menu():
 def is_true(value):
     """ Is this value True? """
 
-    return value.lower() in [ 'yes', 'y', 'sí', 'si', 'oui']
+    return value.lower() in [ 'yes', 'y', 'sí', 'si', 'oui' ]
 
 
 # If run in localhost
