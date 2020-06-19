@@ -4,6 +4,7 @@ import io
 import sys
 import csv
 import pandas as pd
+import re
 from html import escape
 from flask import Flask, jsonify, request
 from bs4 import BeautifulSoup
@@ -149,14 +150,7 @@ def generate_menu():
                     # )
 
                     # Price
-                    item_price = item["price"]
-                    # Convert to float if it is a number
-                    if item_price.replace('.', '', 1).isdigit():
-                        item_price = '{:.2f}'.format(float(item_price)) if float(item_price) > 0 else ''
-                    else:
-                        item_price = ''
-                    # Escape when it is a String
-                    item_price = escape(item_price)
+                    item_price = format_price(item["price"])
 
                     # Description
                     item_description = escape(item["description"])
@@ -249,6 +243,28 @@ def is_true(value):
     """ Is this value True? """
 
     return value.lower() in [ 'yes', 'y', 'sí', 'si', 'oui' ]
+
+
+def format_price(value):
+    """ Format price """
+
+    # Convert to String first
+    value = str(value).lower()
+
+    # Extract numbers only
+    # https://stackoverflow.com/questions/4289331/how-to-extract-numbers-from-a-string-in-python
+    values = re.findall(r"[-+]?[.]?[\d]+(?:,\d\d\d)*[\.]?\d*(?:[eE][-+]?\d+)?", value)
+    if len(values) == 0: return ''
+    value = values[0]
+
+    # Format it with 2 decimals
+    value = '{:.2f}'.format(float(value)) if float(value) > 0 else ''
+
+    # Remove '.00' if present
+    value = value.rstrip('.00') if value.endswith('.00') else value
+    
+    # Escape when it is a String
+    return escape(value)
 
 
 # If run in localhost
