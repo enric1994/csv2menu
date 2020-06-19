@@ -161,18 +161,51 @@ def generate_menu():
                     # Description
                     item_description = escape(item["description"])
 
-                    # Addons
-                    item_vegan = escape(item["vegan"])
-                    item_glutenfree = escape(item["allergy_gluten"])
+                    # Suitable For
+                    suitable = [
+                        ( escape(item["vegan"]), "Vegan" ),
+                        ( escape(item["vegetarian"]), "Vegetarian" ),
+                    ]
 
-                    # Addons for Description
-                    desc_addons = []
-                    if is_true(item_vegan):
-                        desc_addons.append("Vegan")
-                    if is_true(item_glutenfree):
-                        desc_addons.append("Gluten-Free")
-                    if len(desc_addons):
-                        item_description += " (" + ', '.join(desc_addons) + ")"
+                    # Add Suitable For
+                    desc_suitable = []
+                    for addon in suitable:
+                        if is_true(addon[0]):
+                            desc_suitable.append(addon[1])
+                    if len(desc_suitable):
+                        item_description += "\nSuitable for: " + ', '.join(desc_suitable) + ")"
+
+                    # Allergens
+                    allergens = [
+                        ( escape(item["allergy_gluten"]), "Gluten" ),
+                        ( escape(item["allergy_crustaceans"]), "Crustaceans" ),
+                        ( escape(item["allergy_eggs"]), "Eggs" ),
+                        ( escape(item["allergy_fish"]), "Fish" ),
+                        ( escape(item["allergy_peanuts"]), "Peanuts" ),
+                        ( escape(item["allergy_soybeans"]), "Soy" ),
+                        ( escape(item["allergy_milk"]), "Milk" ),
+                        ( escape(item["allergy_nuts"]), "Nuts" ),
+                        ( escape(item["allergy_celery"]), "Celery" ),
+                        ( escape(item["allergy_mustard"]), "Mustard" ),
+                        ( escape(item["allergy_sesame"]), "Sesame" ),
+                        ( escape(item["allergy_sulphites"]), "Sulphites" ),
+                        ( escape(item["allergy_lupin"]), "Lupin" ),
+                        ( escape(item["allergy_molluscs"]), "Molluscs" ),
+                    ]
+
+                    # Add Allergens
+                    desc_allergens = []
+                    for addon in allergens:
+                        if is_true(addon[0]):
+                            desc_allergens.append(addon[1])
+                    if len(desc_allergens):
+                        item_description += "\nContains: " + ', '.join(desc_allergens) + ")"
+
+                    # Comments: to be added
+                    item_comments = escape(item["comments"])
+
+                    # Calories: to be formatted and added
+                    item_calories = escape(item["calories"])
 
                     html += """
                         <div class="menu-item">

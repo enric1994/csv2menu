@@ -4,7 +4,6 @@ filename = 'examples/menu_2.csv'
 headers = {
     'Content-Type': 'text/plain',
     'restaurant_name': 'Domino\'s pizza'
-
 }
 url = "http://localhost:5000/menu"
 
