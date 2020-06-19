@@ -5,6 +5,8 @@ import sys
 import csv
 import pandas as pd
 import re
+
+from os.path import join, abspath, dirname
 from html import escape
 from flask import Flask, jsonify, request
 from bs4 import BeautifulSoup
@@ -16,9 +18,13 @@ app.config['SECRET_KEY'] = 'this is my secret key!'
 
 
 # Static path
-STATIC_PATH = os.path.abspath(os.path.join(os.path.dirname(os.path.abspath(__file__)), "static"))
-CSS_FILEPATH = os.path.join(STATIC_PATH, 'css', 'style.css')
+STATIC_PATH = abspath(join(dirname(abspath(__file__)), "static"))
+CSS_FILEPATH = join(STATIC_PATH, 'css', 'style.css')
+ICONS_FILEPATH = '../src/static/icons'
 OUTPUT_HTML = "/data/outputs/menu.html"
+
+arrow_up = "\u25B4"
+arrow_down = "\u25BE"
 
 
 @app.route('/menu', methods=['GET', 'POST'])
@@ -91,7 +97,10 @@ def generate_menu():
         used_categories = set()
         used_subcategories = set()
 
-        for category in category_to_items.keys():
+        # from pprint import pprint
+        # pprint(category_to_items)
+        #
+        for c, category in enumerate(category_to_items.keys()):
 
             # Items
             items = category_to_items[category]
@@ -99,8 +108,8 @@ def generate_menu():
             # Escape Category
             category = escape(category)
 
-            for item in items:
-                
+            for i, item in enumerate(items):
+
                 # Name
                 item_name = escape(item["name"])
 
@@ -137,7 +146,7 @@ def generate_menu():
                         """.format(item_subcategory)
 
                     used_subcategories.add(item_subcategory)
-                
+
                 # Add item
                 if valid_category:
 
@@ -168,26 +177,24 @@ def generate_menu():
 
                     # Allergens
                     allergens = [
-                        ( escape(item["allergy_gluten"]), "Gluten" ),
-                        ( escape(item["allergy_crustaceans"]), "Crustaceans" ),
-                        ( escape(item["allergy_eggs"]), "Eggs" ),
-                        ( escape(item["allergy_fish"]), "Fish" ),
-                        ( escape(item["allergy_peanuts"]), "Peanuts" ),
-                        ( escape(item["allergy_soybeans"]), "Soy" ),
-                        ( escape(item["allergy_milk"]), "Milk" ),
-                        ( escape(item["allergy_nuts"]), "Nuts" ),
-                        ( escape(item["allergy_celery"]), "Celery" ),
-                        ( escape(item["allergy_mustard"]), "Mustard" ),
-                        ( escape(item["allergy_sesame"]), "Sesame" ),
-                        ( escape(item["allergy_sulphites"]), "Sulphites" ),
-                        ( escape(item["allergy_lupin"]), "Lupin" ),
-                        ( escape(item["allergy_molluscs"]), "Molluscs" ),
+                        ( escape(item["allergy_gluten"]), "wheat" ),
+                        ( escape(item["allergy_crustaceans"]), "crustacena" ),
+                        ( escape(item["allergy_eggs"]), "eggs" ),
+                        ( escape(item["allergy_fish"]), "fish" ),
+                        ( escape(item["allergy_peanuts"]), "peanut" ),
+                        ( escape(item["allergy_soybeans"]), "soya" ),
+                        ( escape(item["allergy_milk"]), "milk" ),
+                        ( escape(item["allergy_nuts"]), "treenut" ),
+                        ( escape(item["allergy_celery"]), "celery" ),
+                        ( escape(item["allergy_mustard"]), "mustard" ),
+                        ( escape(item["allergy_sesame"]), "sesame" ),
+                        ( escape(item["allergy_sulphites"]), "sulphurdioxide" ),
+                        ( escape(item["allergy_lupin"]), "lupin" ),
+                        ( escape(item["allergy_molluscs"]), "molluscs" ),
                     ]
 
                     # Add Allergens
-                    desc_allergens = [ addon[1] for addon in allergens if is_true(addon[0]) ]
-                    if len(desc_allergens):
-                        item_description += "\nContains: " + ', '.join(desc_allergens)
+                    bool_allergens = [ (is_true(x), y) for x,y in allergens ]
 
                     # Comments: to be added
                     item_comments = escape(item["comments"])
@@ -196,25 +203,54 @@ def generate_menu():
                     item_calories = escape(item["calories"])
 
                     html += """
-                        <div class="menu-item">
-                            <div class="menu-item-name"> {} </div>
+                        <div id="{}" class="menu-item">
+                            <div class="menu-item-name">
+                                <div>{}</div>
+                                <div class="arrow">{}</div>
+                            </div>
                             <div class="menu-item-price"> {} </div>
-                            <div class="menu-item-description"> {} </div>
+                            <div class="menu-item-description smalldesc">
+                                <div>{}</div>
+                                <div>
+                            """.format(
+                                str(c) + str(i),
+                                item_name,
+                                arrow_down,
+                                item_price,
+                                item_description)
+
+                    if not item['comments'] == '':
+                        html += """
+                            <div>{}</div>
+                        """.format(item['comments'])
+                    if not item['calories'] == '':
+                        html += """
+                            <div>{}</div>
+                        """.format(item['calories'])
+
+                    for allergen in bool_allergens:
+                        color = '_amber_' if allergen[0] else '_grey_'
+                        html += """
+                                    <img src="{}" class="icon" />
+                                """.format(join(ICONS_FILEPATH, allergen[1], 'PNG', allergen[1] + color + '50x50.png'))
+
+                    html += """
+                                </div>
+                            </div>
                         </div>
-                        """.format(
-                            item_name,
-                            item_price,
-                            item_description
-                        )
-            
+                        """
+
             # HTML thematic break
             html += "<hr>"
+
+        html += addScript(category_to_items)
 
         # Footer
         html += """</div>
             <div class="footer">
                 Menu made using <a href=https://godigital.menu target='_blank'>godigital.menu</a>
             </div>"""
+
 
         # Parse HTML with BeautifulSoup
         soup = BeautifulSoup(html, "html.parser")
@@ -244,6 +280,29 @@ def is_true(value):
 
     return value.lower() in [ 'yes', 'y', 'sí', 'si', 'oui' ]
 
+def addScript(cat2ite):
+    html = """
+    <script>
+        var items = [];
+        var arrow_up = "\u25B4";
+        var arrow_down = "\u25BE";
+    """
+
+    counter = -1
+    for i, (k,v) in enumerate(cat2ite.items()):
+        for j, ite in enumerate(v):
+            counter += 1
+            html += """
+            items[{}] = document.getElementById('{}');
+            items[{}].addEventListener('click', function() {{
+                items[{}].querySelector('.smalldesc').classList.toggle('expand');
+                items[{}].querySelector('.arrow').classList.toggle('up');
+             }});
+             """.format(counter, str(i)+str(j), counter, counter, counter)
+    html += """
+    </script>
+    """
+    return html
 
 def format_price(value):
     """ Format price """
@@ -262,7 +321,7 @@ def format_price(value):
 
     # Remove '.00' if present
     value = value.rstrip('.00') if value.endswith('.00') else value
-    
+
     # Escape when it is a String
     return escape(value)
 

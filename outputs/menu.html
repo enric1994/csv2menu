@@ -96,51 +96,21 @@ h3{
   font-size: 1rem;
 }
 
-
-/* The actual popup
-.menu-item-name .popuptext {
-  visibility: hidden;
-  width: 160px;
-  background-color: #555;
-  color: #fff;
-  text-align: center;
-  border-radius: 6px;
-  padding: 8px 0;
-  position: absolute;
-  z-index: 1;
-  bottom: 125%;
-  left: 50%;
-  margin-left: -80px;
+.smalldesc {
+  max-height: 0px;
+  overflow: hidden;
+  transition: all 0.5s ease;
 }
 
-/* Popup arrow */
-.menu-item-name .popuptext::after {
-  content: &quot;&quot;;
-  position: absolute;
-  top: 100%;
-  left: 50%;
-  margin-left: -5px;
-  border-width: 5px;
-  border-style: solid;
-  border-color: #555 transparent transparent transparent;
+.smalldesc.expand {
+  max-height: 300px;
 }
 
-/* Toggle this class - hide and show the popup */
-.menu-item-name .show {
-  visibility: visible;
-  -webkit-animation: fadeIn 1s;
-  animation: fadeIn 1s;
+.arrow {
+  content: &quot;\u25BE&quot;
 }
-
-/* Add animation (fade in the popup) */
-@-webkit-keyframes fadeIn {
-  from {opacity: 0;}
-  to {opacity: 1;}
-}
-
-@keyframes fadeIn {
-  from {opacity: 0;}
-  to {opacity:1 ;}
+.arrow.up:after {
+  content: &quot;\u25B4&quot;
 }
   </style>
   <meta content="text/html; charset=utf-8" http-equiv="Content-Type"/>
@@ -160,26 +130,77 @@ h3{
      Starter
     </h3>
    </div>
-   <div class="menu-item">
+   <div class="menu-item" id="00">
     <div class="menu-item-name">
-     Chilli Gobi
+     <div>
+      Chilli Gobi
+     </div>
+     <div class="arrow">
+      ▾
+     </div>
     </div>
     <div class="menu-item-price">
     </div>
-    <div class="menu-item-description">
-     Fresh cauliflower prepared with fresh herbs and chili peppers.
+    <div class="menu-item-description smalldesc">
+     <div>
+      Fresh cauliflower prepared with fresh herbs and chili peppers.
 Suitable for: Vegan, Vegetarian
+     </div>
+     <div>
+      <div>
+       Very spicy
+      </div>
+      <div>
+       320
+      </div>
+      <img class="icon" src="../src/static/icons/wheat/PNG/wheat_grey_50x50.png"/>
+      <img class="icon" src="../src/static/icons/crustacena/PNG/crustacena_grey_50x50.png"/>
+      <img class="icon" src="../src/static/icons/eggs/PNG/eggs_grey_50x50.png"/>
+      <img class="icon" src="../src/static/icons/fish/PNG/fish_grey_50x50.png"/>
+      <img class="icon" src="../src/static/icons/peanut/PNG/peanut_grey_50x50.png"/>
+      <img class="icon" src="../src/static/icons/soya/PNG/soya_grey_50x50.png"/>
+      <img class="icon" src="../src/static/icons/milk/PNG/milk_grey_50x50.png"/>
+      <img class="icon" src="../src/static/icons/treenut/PNG/treenut_grey_50x50.png"/>
+      <img class="icon" src="../src/static/icons/celery/PNG/celery_grey_50x50.png"/>
+      <img class="icon" src="../src/static/icons/mustard/PNG/mustard_grey_50x50.png"/>
+      <img class="icon" src="../src/static/icons/sesame/PNG/sesame_grey_50x50.png"/>
+      <img class="icon" src="../src/static/icons/sulphurdioxide/PNG/sulphurdioxide_grey_50x50.png"/>
+      <img class="icon" src="../src/static/icons/lupin/PNG/lupin_grey_50x50.png"/>
+      <img class="icon" src="../src/static/icons/molluscs/PNG/molluscs_grey_50x50.png"/>
+     </div>
     </div>
    </div>
-   <div class="menu-item">
+   <div class="menu-item" id="01">
     <div class="menu-item-name">
-     Gobi Manchurian
+     <div>
+      Gobi Manchurian
+     </div>
+     <div class="arrow">
+      ▾
+     </div>
     </div>
     <div class="menu-item-price">
     </div>
-    <div class="menu-item-description">
-     Crispy cauliflower in savory Manchurian sauce.
-Contains: Gluten
+    <div class="menu-item-description smalldesc">
+     <div>
+      Crispy cauliflower in savory Manchurian sauce.
+     </div>
+     <div>
+      <img class="icon" src="../src/static/icons/wheat/PNG/wheat_amber_50x50.png"/>
+      <img class="icon" src="../src/static/icons/crustacena/PNG/crustacena_grey_50x50.png"/>
+      <img class="icon" src="../src/static/icons/eggs/PNG/eggs_grey_50x50.png"/>
+      <img class="icon" src="../src/static/icons/fish/PNG/fish_grey_50x50.png"/>
+      <img class="icon" src="../src/static/icons/peanut/PNG/peanut_grey_50x50.png"/>
+      <img class="icon" src="../src/static/icons/soya/PNG/soya_grey_50x50.png"/>
+      <img class="icon" src="../src/static/icons/milk/PNG/milk_grey_50x50.png"/>
+      <img class="icon" src="../src/static/icons/treenut/PNG/treenut_grey_50x50.png"/>
+      <img class="icon" src="../src/static/icons/celery/PNG/celery_grey_50x50.png"/>
+      <img class="icon" src="../src/static/icons/mustard/PNG/mustard_grey_50x50.png"/>
+      <img class="icon" src="../src/static/icons/sesame/PNG/sesame_grey_50x50.png"/>
+      <img class="icon" src="../src/static/icons/sulphurdioxide/PNG/sulphurdioxide_grey_50x50.png"/>
+      <img class="icon" src="../src/static/icons/lupin/PNG/lupin_grey_50x50.png"/>
+      <img class="icon" src="../src/static/icons/molluscs/PNG/molluscs_grey_50x50.png"/>
+     </div>
     </div>
    </div>
    <div class="menu-section">
@@ -187,25 +208,73 @@ Contains: Gluten
      Main course
     </h3>
    </div>
-   <div class="menu-item">
+   <div class="menu-item" id="02">
     <div class="menu-item-name">
-     Sweet &amp; Sour Vegetable
+     <div>
+      Sweet &amp; Sour Vegetable
+     </div>
+     <div class="arrow">
+      ▾
+     </div>
     </div>
     <div class="menu-item-price">
     </div>
-    <div class="menu-item-description">
-     Fresh vegetables mixed with pineapples in a sweet and source sauce.
+    <div class="menu-item-description smalldesc">
+     <div>
+      Fresh vegetables mixed with pineapples in a sweet and source sauce.
 Suitable for: Vegan, Vegetarian
-Contains: Crustaceans
+     </div>
+     <div>
+      <div>
+       200kcal
+      </div>
+      <img class="icon" src="../src/static/icons/wheat/PNG/wheat_grey_50x50.png"/>
+      <img class="icon" src="../src/static/icons/crustacena/PNG/crustacena_amber_50x50.png"/>
+      <img class="icon" src="../src/static/icons/eggs/PNG/eggs_grey_50x50.png"/>
+      <img class="icon" src="../src/static/icons/fish/PNG/fish_grey_50x50.png"/>
+      <img class="icon" src="../src/static/icons/peanut/PNG/peanut_grey_50x50.png"/>
+      <img class="icon" src="../src/static/icons/soya/PNG/soya_grey_50x50.png"/>
+      <img class="icon" src="../src/static/icons/milk/PNG/milk_grey_50x50.png"/>
+      <img class="icon" src="../src/static/icons/treenut/PNG/treenut_grey_50x50.png"/>
+      <img class="icon" src="../src/static/icons/celery/PNG/celery_grey_50x50.png"/>
+      <img class="icon" src="../src/static/icons/mustard/PNG/mustard_grey_50x50.png"/>
+      <img class="icon" src="../src/static/icons/sesame/PNG/sesame_grey_50x50.png"/>
+      <img class="icon" src="../src/static/icons/sulphurdioxide/PNG/sulphurdioxide_grey_50x50.png"/>
+      <img class="icon" src="../src/static/icons/lupin/PNG/lupin_grey_50x50.png"/>
+      <img class="icon" src="../src/static/icons/molluscs/PNG/molluscs_grey_50x50.png"/>
+     </div>
     </div>
    </div>
-   <div class="menu-item">
+   <div class="menu-item" id="03">
     <div class="menu-item-name">
-     Lollipop Chicken Wings
+     <div>
+      Lollipop Chicken Wings
+     </div>
+     <div class="arrow">
+      ▾
+     </div>
     </div>
     <div class="menu-item-price">
     </div>
-    <div class="menu-item-description">
+    <div class="menu-item-description smalldesc">
+     <div>
+     </div>
+     <div>
+      <img class="icon" src="../src/static/icons/wheat/PNG/wheat_grey_50x50.png"/>
+      <img class="icon" src="../src/static/icons/crustacena/PNG/crustacena_grey_50x50.png"/>
+      <img class="icon" src="../src/static/icons/eggs/PNG/eggs_grey_50x50.png"/>
+      <img class="icon" src="../src/static/icons/fish/PNG/fish_grey_50x50.png"/>
+      <img class="icon" src="../src/static/icons/peanut/PNG/peanut_grey_50x50.png"/>
+      <img class="icon" src="../src/static/icons/soya/PNG/soya_grey_50x50.png"/>
+      <img class="icon" src="../src/static/icons/milk/PNG/milk_grey_50x50.png"/>
+      <img class="icon" src="../src/static/icons/treenut/PNG/treenut_grey_50x50.png"/>
+      <img class="icon" src="../src/static/icons/celery/PNG/celery_grey_50x50.png"/>
+      <img class="icon" src="../src/static/icons/mustard/PNG/mustard_grey_50x50.png"/>
+      <img class="icon" src="../src/static/icons/sesame/PNG/sesame_grey_50x50.png"/>
+      <img class="icon" src="../src/static/icons/sulphurdioxide/PNG/sulphurdioxide_grey_50x50.png"/>
+      <img class="icon" src="../src/static/icons/lupin/PNG/lupin_grey_50x50.png"/>
+      <img class="icon" src="../src/static/icons/molluscs/PNG/molluscs_grey_50x50.png"/>
+     </div>
     </div>
    </div>
    <div class="menu-section">
@@ -213,24 +282,72 @@ Contains: Crustaceans
      Dessert
     </h3>
    </div>
-   <div class="menu-item">
+   <div class="menu-item" id="04">
     <div class="menu-item-name">
-     Ice Cream
+     <div>
+      Ice Cream
+     </div>
+     <div class="arrow">
+      ▾
+     </div>
     </div>
     <div class="menu-item-price">
     </div>
-    <div class="menu-item-description">
-     Chocolate, mint or lemon
-Contains: Eggs, Fish, Peanuts, Soy
+    <div class="menu-item-description smalldesc">
+     <div>
+      Chocolate, mint or lemon
+     </div>
+     <div>
+      <img class="icon" src="../src/static/icons/wheat/PNG/wheat_grey_50x50.png"/>
+      <img class="icon" src="../src/static/icons/crustacena/PNG/crustacena_grey_50x50.png"/>
+      <img class="icon" src="../src/static/icons/eggs/PNG/eggs_amber_50x50.png"/>
+      <img class="icon" src="../src/static/icons/fish/PNG/fish_amber_50x50.png"/>
+      <img class="icon" src="../src/static/icons/peanut/PNG/peanut_amber_50x50.png"/>
+      <img class="icon" src="../src/static/icons/soya/PNG/soya_amber_50x50.png"/>
+      <img class="icon" src="../src/static/icons/milk/PNG/milk_grey_50x50.png"/>
+      <img class="icon" src="../src/static/icons/treenut/PNG/treenut_grey_50x50.png"/>
+      <img class="icon" src="../src/static/icons/celery/PNG/celery_grey_50x50.png"/>
+      <img class="icon" src="../src/static/icons/mustard/PNG/mustard_grey_50x50.png"/>
+      <img class="icon" src="../src/static/icons/sesame/PNG/sesame_grey_50x50.png"/>
+      <img class="icon" src="../src/static/icons/sulphurdioxide/PNG/sulphurdioxide_grey_50x50.png"/>
+      <img class="icon" src="../src/static/icons/lupin/PNG/lupin_grey_50x50.png"/>
+      <img class="icon" src="../src/static/icons/molluscs/PNG/molluscs_grey_50x50.png"/>
+     </div>
     </div>
    </div>
-   <div class="menu-item">
+   <div class="menu-item" id="05">
     <div class="menu-item-name">
-     Fruit of the season
+     <div>
+      Fruit of the season
+     </div>
+     <div class="arrow">
+      ▾
+     </div>
     </div>
     <div class="menu-item-price">
     </div>
-    <div class="menu-item-description">
+    <div class="menu-item-description smalldesc">
+     <div>
+     </div>
+     <div>
+      <div>
+       Ask to the waiter for additional information
+      </div>
+      <img class="icon" src="../src/static/icons/wheat/PNG/wheat_grey_50x50.png"/>
+      <img class="icon" src="../src/static/icons/crustacena/PNG/crustacena_grey_50x50.png"/>
+      <img class="icon" src="../src/static/icons/eggs/PNG/eggs_grey_50x50.png"/>
+      <img class="icon" src="../src/static/icons/fish/PNG/fish_grey_50x50.png"/>
+      <img class="icon" src="../src/static/icons/peanut/PNG/peanut_grey_50x50.png"/>
+      <img class="icon" src="../src/static/icons/soya/PNG/soya_grey_50x50.png"/>
+      <img class="icon" src="../src/static/icons/milk/PNG/milk_grey_50x50.png"/>
+      <img class="icon" src="../src/static/icons/treenut/PNG/treenut_grey_50x50.png"/>
+      <img class="icon" src="../src/static/icons/celery/PNG/celery_grey_50x50.png"/>
+      <img class="icon" src="../src/static/icons/mustard/PNG/mustard_grey_50x50.png"/>
+      <img class="icon" src="../src/static/icons/sesame/PNG/sesame_grey_50x50.png"/>
+      <img class="icon" src="../src/static/icons/sulphurdioxide/PNG/sulphurdioxide_grey_50x50.png"/>
+      <img class="icon" src="../src/static/icons/lupin/PNG/lupin_grey_50x50.png"/>
+      <img class="icon" src="../src/static/icons/molluscs/PNG/molluscs_grey_50x50.png"/>
+     </div>
     </div>
    </div>
    <hr/>
@@ -244,49 +361,143 @@ Contains: Eggs, Fish, Peanuts, Soy
      Chicken
     </h3>
    </div>
-   <div class="menu-item">
+   <div class="menu-item" id="10">
     <div class="menu-item-name">
-     Broccoli Chicken
+     <div>
+      Broccoli Chicken
+     </div>
+     <div class="arrow">
+      ▾
+     </div>
     </div>
     <div class="menu-item-price">
-     13.00
+     13
     </div>
-    <div class="menu-item-description">
-     Sliced chicken and broccoli in a tasty garlic sauce.
+    <div class="menu-item-description smalldesc">
+     <div>
+      Sliced chicken and broccoli in a tasty garlic sauce.
+     </div>
+     <div>
+      <img class="icon" src="../src/static/icons/wheat/PNG/wheat_grey_50x50.png"/>
+      <img class="icon" src="../src/static/icons/crustacena/PNG/crustacena_grey_50x50.png"/>
+      <img class="icon" src="../src/static/icons/eggs/PNG/eggs_grey_50x50.png"/>
+      <img class="icon" src="../src/static/icons/fish/PNG/fish_grey_50x50.png"/>
+      <img class="icon" src="../src/static/icons/peanut/PNG/peanut_grey_50x50.png"/>
+      <img class="icon" src="../src/static/icons/soya/PNG/soya_grey_50x50.png"/>
+      <img class="icon" src="../src/static/icons/milk/PNG/milk_grey_50x50.png"/>
+      <img class="icon" src="../src/static/icons/treenut/PNG/treenut_grey_50x50.png"/>
+      <img class="icon" src="../src/static/icons/celery/PNG/celery_grey_50x50.png"/>
+      <img class="icon" src="../src/static/icons/mustard/PNG/mustard_grey_50x50.png"/>
+      <img class="icon" src="../src/static/icons/sesame/PNG/sesame_grey_50x50.png"/>
+      <img class="icon" src="../src/static/icons/sulphurdioxide/PNG/sulphurdioxide_grey_50x50.png"/>
+      <img class="icon" src="../src/static/icons/lupin/PNG/lupin_grey_50x50.png"/>
+      <img class="icon" src="../src/static/icons/molluscs/PNG/molluscs_grey_50x50.png"/>
+     </div>
     </div>
    </div>
-   <div class="menu-item">
+   <div class="menu-item" id="11">
     <div class="menu-item-name">
-     Sweet &amp; Sour Chicken
+     <div>
+      Sweet &amp; Sour Chicken
+     </div>
+     <div class="arrow">
+      ▾
+     </div>
     </div>
     <div class="menu-item-price">
      13.50
     </div>
-    <div class="menu-item-description">
-     Diced chicken breast lightly stir-fried with a tangy sweet and spice sauce
+    <div class="menu-item-description smalldesc">
+     <div>
+      Diced chicken breast lightly stir-fried with a tangy sweet and spice sauce
+     </div>
+     <div>
+      <img class="icon" src="../src/static/icons/wheat/PNG/wheat_grey_50x50.png"/>
+      <img class="icon" src="../src/static/icons/crustacena/PNG/crustacena_grey_50x50.png"/>
+      <img class="icon" src="../src/static/icons/eggs/PNG/eggs_grey_50x50.png"/>
+      <img class="icon" src="../src/static/icons/fish/PNG/fish_grey_50x50.png"/>
+      <img class="icon" src="../src/static/icons/peanut/PNG/peanut_grey_50x50.png"/>
+      <img class="icon" src="../src/static/icons/soya/PNG/soya_grey_50x50.png"/>
+      <img class="icon" src="../src/static/icons/milk/PNG/milk_grey_50x50.png"/>
+      <img class="icon" src="../src/static/icons/treenut/PNG/treenut_grey_50x50.png"/>
+      <img class="icon" src="../src/static/icons/celery/PNG/celery_grey_50x50.png"/>
+      <img class="icon" src="../src/static/icons/mustard/PNG/mustard_grey_50x50.png"/>
+      <img class="icon" src="../src/static/icons/sesame/PNG/sesame_grey_50x50.png"/>
+      <img class="icon" src="../src/static/icons/sulphurdioxide/PNG/sulphurdioxide_grey_50x50.png"/>
+      <img class="icon" src="../src/static/icons/lupin/PNG/lupin_grey_50x50.png"/>
+      <img class="icon" src="../src/static/icons/molluscs/PNG/molluscs_grey_50x50.png"/>
+     </div>
     </div>
    </div>
-   <div class="menu-item">
+   <div class="menu-item" id="12">
     <div class="menu-item-name">
-     Manchurian Chicken
+     <div>
+      Manchurian Chicken
+     </div>
+     <div class="arrow">
+      ▾
+     </div>
     </div>
     <div class="menu-item-price">
-     13.00
+     13
     </div>
-    <div class="menu-item-description">
-     Tender pieces of chicken in a savory Manchurian sauce.
+    <div class="menu-item-description smalldesc">
+     <div>
+      Tender pieces of chicken in a savory Manchurian sauce.
+     </div>
+     <div>
+      <img class="icon" src="../src/static/icons/wheat/PNG/wheat_grey_50x50.png"/>
+      <img class="icon" src="../src/static/icons/crustacena/PNG/crustacena_grey_50x50.png"/>
+      <img class="icon" src="../src/static/icons/eggs/PNG/eggs_grey_50x50.png"/>
+      <img class="icon" src="../src/static/icons/fish/PNG/fish_grey_50x50.png"/>
+      <img class="icon" src="../src/static/icons/peanut/PNG/peanut_grey_50x50.png"/>
+      <img class="icon" src="../src/static/icons/soya/PNG/soya_grey_50x50.png"/>
+      <img class="icon" src="../src/static/icons/milk/PNG/milk_grey_50x50.png"/>
+      <img class="icon" src="../src/static/icons/treenut/PNG/treenut_grey_50x50.png"/>
+      <img class="icon" src="../src/static/icons/celery/PNG/celery_grey_50x50.png"/>
+      <img class="icon" src="../src/static/icons/mustard/PNG/mustard_grey_50x50.png"/>
+      <img class="icon" src="../src/static/icons/sesame/PNG/sesame_grey_50x50.png"/>
+      <img class="icon" src="../src/static/icons/sulphurdioxide/PNG/sulphurdioxide_grey_50x50.png"/>
+      <img class="icon" src="../src/static/icons/lupin/PNG/lupin_grey_50x50.png"/>
+      <img class="icon" src="../src/static/icons/molluscs/PNG/molluscs_grey_50x50.png"/>
+     </div>
     </div>
    </div>
-   <div class="menu-item">
+   <div class="menu-item" id="13">
     <div class="menu-item-name">
-     Basil Ginger Chicken
+     <div>
+      Basil Ginger Chicken
+     </div>
+     <div class="arrow">
+      ▾
+     </div>
     </div>
     <div class="menu-item-price">
-     13.00
+     13
     </div>
-    <div class="menu-item-description">
-     Stir-fried sliced chicken breast with basil and garlic sauce.
-Contains: Soy, Milk, Nuts, Celery, Mustard, Sesame, Sulphites, Lupin, Molluscs
+    <div class="menu-item-description smalldesc">
+     <div>
+      Stir-fried sliced chicken breast with basil and garlic sauce.
+     </div>
+     <div>
+      <div>
+       0
+      </div>
+      <img class="icon" src="../src/static/icons/wheat/PNG/wheat_grey_50x50.png"/>
+      <img class="icon" src="../src/static/icons/crustacena/PNG/crustacena_grey_50x50.png"/>
+      <img class="icon" src="../src/static/icons/eggs/PNG/eggs_grey_50x50.png"/>
+      <img class="icon" src="../src/static/icons/fish/PNG/fish_grey_50x50.png"/>
+      <img class="icon" src="../src/static/icons/peanut/PNG/peanut_grey_50x50.png"/>
+      <img class="icon" src="../src/static/icons/soya/PNG/soya_amber_50x50.png"/>
+      <img class="icon" src="../src/static/icons/milk/PNG/milk_amber_50x50.png"/>
+      <img class="icon" src="../src/static/icons/treenut/PNG/treenut_amber_50x50.png"/>
+      <img class="icon" src="../src/static/icons/celery/PNG/celery_amber_50x50.png"/>
+      <img class="icon" src="../src/static/icons/mustard/PNG/mustard_amber_50x50.png"/>
+      <img class="icon" src="../src/static/icons/sesame/PNG/sesame_amber_50x50.png"/>
+      <img class="icon" src="../src/static/icons/sulphurdioxide/PNG/sulphurdioxide_amber_50x50.png"/>
+      <img class="icon" src="../src/static/icons/lupin/PNG/lupin_amber_50x50.png"/>
+      <img class="icon" src="../src/static/icons/molluscs/PNG/molluscs_amber_50x50.png"/>
+     </div>
     </div>
    </div>
    <div class="menu-section">
@@ -294,29 +505,280 @@ Contains: Soy, Milk, Nuts, Celery, Mustard, Sesame, Sulphites, Lupin, Molluscs
      Shrimp
     </h3>
    </div>
-   <div class="menu-item">
+   <div class="menu-item" id="14">
     <div class="menu-item-name">
-     Hot Garlic Shrimp
+     <div>
+      Hot Garlic Shrimp
+     </div>
+     <div class="arrow">
+      ▾
+     </div>
     </div>
     <div class="menu-item-price">
-     16.00
+     16
     </div>
-    <div class="menu-item-description">
-     Large gourmet shrimp in a spicy garlic sauce.
+    <div class="menu-item-description smalldesc">
+     <div>
+      Large gourmet shrimp in a spicy garlic sauce.
+     </div>
+     <div>
+      <img class="icon" src="../src/static/icons/wheat/PNG/wheat_grey_50x50.png"/>
+      <img class="icon" src="../src/static/icons/crustacena/PNG/crustacena_grey_50x50.png"/>
+      <img class="icon" src="../src/static/icons/eggs/PNG/eggs_grey_50x50.png"/>
+      <img class="icon" src="../src/static/icons/fish/PNG/fish_grey_50x50.png"/>
+      <img class="icon" src="../src/static/icons/peanut/PNG/peanut_grey_50x50.png"/>
+      <img class="icon" src="../src/static/icons/soya/PNG/soya_grey_50x50.png"/>
+      <img class="icon" src="../src/static/icons/milk/PNG/milk_grey_50x50.png"/>
+      <img class="icon" src="../src/static/icons/treenut/PNG/treenut_grey_50x50.png"/>
+      <img class="icon" src="../src/static/icons/celery/PNG/celery_grey_50x50.png"/>
+      <img class="icon" src="../src/static/icons/mustard/PNG/mustard_grey_50x50.png"/>
+      <img class="icon" src="../src/static/icons/sesame/PNG/sesame_grey_50x50.png"/>
+      <img class="icon" src="../src/static/icons/sulphurdioxide/PNG/sulphurdioxide_grey_50x50.png"/>
+      <img class="icon" src="../src/static/icons/lupin/PNG/lupin_grey_50x50.png"/>
+      <img class="icon" src="../src/static/icons/molluscs/PNG/molluscs_grey_50x50.png"/>
+     </div>
     </div>
    </div>
-   <div class="menu-item">
+   <div class="menu-item" id="15">
     <div class="menu-item-name">
-     Schezwan Shrimp
+     <div>
+      Schezwan Shrimp
+     </div>
+     <div class="arrow">
+      ▾
+     </div>
     </div>
     <div class="menu-item-price">
      16.50
     </div>
-    <div class="menu-item-description">
-     Gourmet shrimp sauteed with fresh vegetables in a savory schezwan sauce.
+    <div class="menu-item-description smalldesc">
+     <div>
+      Gourmet shrimp sauteed with fresh vegetables in a savory schezwan sauce.
+     </div>
+     <div>
+      <img class="icon" src="../src/static/icons/wheat/PNG/wheat_grey_50x50.png"/>
+      <img class="icon" src="../src/static/icons/crustacena/PNG/crustacena_grey_50x50.png"/>
+      <img class="icon" src="../src/static/icons/eggs/PNG/eggs_grey_50x50.png"/>
+      <img class="icon" src="../src/static/icons/fish/PNG/fish_grey_50x50.png"/>
+      <img class="icon" src="../src/static/icons/peanut/PNG/peanut_grey_50x50.png"/>
+      <img class="icon" src="../src/static/icons/soya/PNG/soya_grey_50x50.png"/>
+      <img class="icon" src="../src/static/icons/milk/PNG/milk_grey_50x50.png"/>
+      <img class="icon" src="../src/static/icons/treenut/PNG/treenut_grey_50x50.png"/>
+      <img class="icon" src="../src/static/icons/celery/PNG/celery_grey_50x50.png"/>
+      <img class="icon" src="../src/static/icons/mustard/PNG/mustard_grey_50x50.png"/>
+      <img class="icon" src="../src/static/icons/sesame/PNG/sesame_grey_50x50.png"/>
+      <img class="icon" src="../src/static/icons/sulphurdioxide/PNG/sulphurdioxide_grey_50x50.png"/>
+      <img class="icon" src="../src/static/icons/lupin/PNG/lupin_grey_50x50.png"/>
+      <img class="icon" src="../src/static/icons/molluscs/PNG/molluscs_grey_50x50.png"/>
+     </div>
     </div>
    </div>
    <hr/>
+   <div class="menu-section">
+    <h2 class="menu-section-title">
+     Beverages
+    </h2>
+   </div>
+   <div class="menu-item" id="20">
+    <div class="menu-item-name">
+     <div>
+      Mango Lassi
+     </div>
+     <div class="arrow">
+      ▾
+     </div>
+    </div>
+    <div class="menu-item-price">
+     5
+    </div>
+    <div class="menu-item-description smalldesc">
+     <div>
+      Traditional cold and refreshing yogurt based drink made with mango pulp.
+     </div>
+     <div>
+      <img class="icon" src="../src/static/icons/wheat/PNG/wheat_grey_50x50.png"/>
+      <img class="icon" src="../src/static/icons/crustacena/PNG/crustacena_grey_50x50.png"/>
+      <img class="icon" src="../src/static/icons/eggs/PNG/eggs_grey_50x50.png"/>
+      <img class="icon" src="../src/static/icons/fish/PNG/fish_grey_50x50.png"/>
+      <img class="icon" src="../src/static/icons/peanut/PNG/peanut_grey_50x50.png"/>
+      <img class="icon" src="../src/static/icons/soya/PNG/soya_grey_50x50.png"/>
+      <img class="icon" src="../src/static/icons/milk/PNG/milk_grey_50x50.png"/>
+      <img class="icon" src="../src/static/icons/treenut/PNG/treenut_grey_50x50.png"/>
+      <img class="icon" src="../src/static/icons/celery/PNG/celery_grey_50x50.png"/>
+      <img class="icon" src="../src/static/icons/mustard/PNG/mustard_grey_50x50.png"/>
+      <img class="icon" src="../src/static/icons/sesame/PNG/sesame_grey_50x50.png"/>
+      <img class="icon" src="../src/static/icons/sulphurdioxide/PNG/sulphurdioxide_grey_50x50.png"/>
+      <img class="icon" src="../src/static/icons/lupin/PNG/lupin_grey_50x50.png"/>
+      <img class="icon" src="../src/static/icons/molluscs/PNG/molluscs_grey_50x50.png"/>
+     </div>
+    </div>
+   </div>
+   <div class="menu-item" id="21">
+    <div class="menu-item-name">
+     <div>
+      Poland Spring Water
+     </div>
+     <div class="arrow">
+      ▾
+     </div>
+    </div>
+    <div class="menu-item-price">
+     1.50
+    </div>
+    <div class="menu-item-description smalldesc">
+     <div>
+     </div>
+     <div>
+      <img class="icon" src="../src/static/icons/wheat/PNG/wheat_grey_50x50.png"/>
+      <img class="icon" src="../src/static/icons/crustacena/PNG/crustacena_grey_50x50.png"/>
+      <img class="icon" src="../src/static/icons/eggs/PNG/eggs_grey_50x50.png"/>
+      <img class="icon" src="../src/static/icons/fish/PNG/fish_grey_50x50.png"/>
+      <img class="icon" src="../src/static/icons/peanut/PNG/peanut_grey_50x50.png"/>
+      <img class="icon" src="../src/static/icons/soya/PNG/soya_grey_50x50.png"/>
+      <img class="icon" src="../src/static/icons/milk/PNG/milk_grey_50x50.png"/>
+      <img class="icon" src="../src/static/icons/treenut/PNG/treenut_grey_50x50.png"/>
+      <img class="icon" src="../src/static/icons/celery/PNG/celery_grey_50x50.png"/>
+      <img class="icon" src="../src/static/icons/mustard/PNG/mustard_grey_50x50.png"/>
+      <img class="icon" src="../src/static/icons/sesame/PNG/sesame_grey_50x50.png"/>
+      <img class="icon" src="../src/static/icons/sulphurdioxide/PNG/sulphurdioxide_grey_50x50.png"/>
+      <img class="icon" src="../src/static/icons/lupin/PNG/lupin_grey_50x50.png"/>
+      <img class="icon" src="../src/static/icons/molluscs/PNG/molluscs_grey_50x50.png"/>
+     </div>
+    </div>
+   </div>
+   <div class="menu-item" id="22">
+    <div class="menu-item-name">
+     <div>
+      Soda
+     </div>
+     <div class="arrow">
+      ▾
+     </div>
+    </div>
+    <div class="menu-item-price">
+     2
+    </div>
+    <div class="menu-item-description smalldesc">
+     <div>
+      Beverage you won't like
+     </div>
+     <div>
+      <div>
+       1
+      </div>
+      <img class="icon" src="../src/static/icons/wheat/PNG/wheat_grey_50x50.png"/>
+      <img class="icon" src="../src/static/icons/crustacena/PNG/crustacena_grey_50x50.png"/>
+      <img class="icon" src="../src/static/icons/eggs/PNG/eggs_grey_50x50.png"/>
+      <img class="icon" src="../src/static/icons/fish/PNG/fish_amber_50x50.png"/>
+      <img class="icon" src="../src/static/icons/peanut/PNG/peanut_amber_50x50.png"/>
+      <img class="icon" src="../src/static/icons/soya/PNG/soya_amber_50x50.png"/>
+      <img class="icon" src="../src/static/icons/milk/PNG/milk_grey_50x50.png"/>
+      <img class="icon" src="../src/static/icons/treenut/PNG/treenut_grey_50x50.png"/>
+      <img class="icon" src="../src/static/icons/celery/PNG/celery_grey_50x50.png"/>
+      <img class="icon" src="../src/static/icons/mustard/PNG/mustard_grey_50x50.png"/>
+      <img class="icon" src="../src/static/icons/sesame/PNG/sesame_grey_50x50.png"/>
+      <img class="icon" src="../src/static/icons/sulphurdioxide/PNG/sulphurdioxide_grey_50x50.png"/>
+      <img class="icon" src="../src/static/icons/lupin/PNG/lupin_grey_50x50.png"/>
+      <img class="icon" src="../src/static/icons/molluscs/PNG/molluscs_grey_50x50.png"/>
+     </div>
+    </div>
+   </div>
+   <hr/>
+   <script>
+    var items = [];
+        var arrow_up = "▴";
+        var arrow_down = "▾";
+    
+            items[0] = document.getElementById('00');
+            items[0].addEventListener('click', function() {
+                items[0].querySelector('.smalldesc').classList.toggle('expand');
+                items[0].querySelector('.arrow').classList.toggle('up');
+             });
+             
+            items[1] = document.getElementById('01');
+            items[1].addEventListener('click', function() {
+                items[1].querySelector('.smalldesc').classList.toggle('expand');
+                items[1].querySelector('.arrow').classList.toggle('up');
+             });
+             
+            items[2] = document.getElementById('02');
+            items[2].addEventListener('click', function() {
+                items[2].querySelector('.smalldesc').classList.toggle('expand');
+                items[2].querySelector('.arrow').classList.toggle('up');
+             });
+             
+            items[3] = document.getElementById('03');
+            items[3].addEventListener('click', function() {
+                items[3].querySelector('.smalldesc').classList.toggle('expand');
+                items[3].querySelector('.arrow').classList.toggle('up');
+             });
+             
+            items[4] = document.getElementById('04');
+            items[4].addEventListener('click', function() {
+                items[4].querySelector('.smalldesc').classList.toggle('expand');
+                items[4].querySelector('.arrow').classList.toggle('up');
+             });
+             
+            items[5] = document.getElementById('05');
+            items[5].addEventListener('click', function() {
+                items[5].querySelector('.smalldesc').classList.toggle('expand');
+                items[5].querySelector('.arrow').classList.toggle('up');
+             });
+             
+            items[6] = document.getElementById('10');
+            items[6].addEventListener('click', function() {
+                items[6].querySelector('.smalldesc').classList.toggle('expand');
+                items[6].querySelector('.arrow').classList.toggle('up');
+             });
+             
+            items[7] = document.getElementById('11');
+            items[7].addEventListener('click', function() {
+                items[7].querySelector('.smalldesc').classList.toggle('expand');
+                items[7].querySelector('.arrow').classList.toggle('up');
+             });
+             
+            items[8] = document.getElementById('12');
+            items[8].addEventListener('click', function() {
+                items[8].querySelector('.smalldesc').classList.toggle('expand');
+                items[8].querySelector('.arrow').classList.toggle('up');
+             });
+             
+            items[9] = document.getElementById('13');
+            items[9].addEventListener('click', function() {
+                items[9].querySelector('.smalldesc').classList.toggle('expand');
+                items[9].querySelector('.arrow').classList.toggle('up');
+             });
+             
+            items[10] = document.getElementById('14');
+            items[10].addEventListener('click', function() {
+                items[10].querySelector('.smalldesc').classList.toggle('expand');
+                items[10].querySelector('.arrow').classList.toggle('up');
+             });
+             
+            items[11] = document.getElementById('15');
+            items[11].addEventListener('click', function() {
+                items[11].querySelector('.smalldesc').classList.toggle('expand');
+                items[11].querySelector('.arrow').classList.toggle('up');
+             });
+             
+            items[12] = document.getElementById('20');
+            items[12].addEventListener('click', function() {
+                items[12].querySelector('.smalldesc').classList.toggle('expand');
+                items[12].querySelector('.arrow').classList.toggle('up');
+             });
+             
+            items[13] = document.getElementById('21');
+            items[13].addEventListener('click', function() {
+                items[13].querySelector('.smalldesc').classList.toggle('expand');
+                items[13].querySelector('.arrow').classList.toggle('up');
+             });
+             
+            items[14] = document.getElementById('22');
+            items[14].addEventListener('click', function() {
+                items[14].querySelector('.smalldesc').classList.toggle('expand');
+                items[14].querySelector('.arrow').classList.toggle('up');
+             });
+   </script>
   </div>
   <div class="footer">
    Menu made using
