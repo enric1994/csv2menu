@@ -21,7 +21,7 @@ app.config['SECRET_KEY'] = 'this is my secret key!'
 STATIC_PATH = abspath(join(dirname(abspath(__file__)), "static"))
 CSS_FILEPATH = join(STATIC_PATH, 'css', 'style.css')
 ICONS_FILEPATH = '../src/static/icons'
-OUTPUT_HTML = "/data/outputs/menu.html"
+OUTPUT_PATH = "/output/"
 
 arrow_up = "\u25B4"
 arrow_down = "\u25BE"
@@ -57,6 +57,7 @@ def generate_menu():
         # Read Request Data: CSV in bytes
         data = request.data
         restaurant_name = request.headers['restaurant_name']
+        output_id = request.headers['output_id']
 
         # Restaurant name
         html += """
@@ -259,11 +260,11 @@ def generate_menu():
         html = soup.prettify()
 
         # Write it!
-        with open(OUTPUT_HTML, "w") as html_file:
+        with open(os.path.join(OUTPUT_PATH, output_id) + '.html', "w") as html_file:
             html_file.write(html)
 
         # Hurray!
-        return jsonify(success=True)
+        return '200'
 
     except Exception as e:
 
@@ -272,7 +273,7 @@ def generate_menu():
         print('#' * 100)
 
         # Fail!
-        return jsonify(success=False)
+        return '500'
 
 
 def is_true(value):
