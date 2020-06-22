@@ -206,17 +206,16 @@ def generate_menu():
                     html += """
                         <div id="{}" class="menu-item">
                             <div class="menu-item-name">
-                                <div>{}</div>
-                                <div class="arrow">{}</div>
+                                <div class="arrow">{} {}</div>
                             </div>
                             <div class="menu-item-price"> {} </div>
+                            <div>{}</div>
                             <div class="menu-item-description smalldesc">
-                                <div>{}</div>
                                 <div>
                             """.format(
                                 str(c) + str(i),
-                                item_name,
                                 arrow_down,
+                                item_name,
                                 item_price,
                                 item_description)
 
