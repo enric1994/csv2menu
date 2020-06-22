@@ -1,6 +1,6 @@
 import requests
 
-filename = 'examples/menu_3.csv'
+filename = '/examples/menu_3.csv'
 headers = {
     'Content-Type': 'text/plain',
     'restaurant_name': 'Domino\'s pizza',

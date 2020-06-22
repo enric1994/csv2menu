@@ -16,7 +16,9 @@ services:
       - LC_ALL=C.UTF-8
       - LANG=C.UTF-8
     volumes:
-      - ../:/data
+      - ../src:/data
+      - ../output:/output
+      - ../examples:/examples
     ports:
       - "5000:5000"
     # command: flask run
