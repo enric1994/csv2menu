@@ -59,7 +59,6 @@ html,body {
 }
 
 .menu-item-description {
-  font-style: italic;
   font-size: 1.5rem;
   line-height: 1.5rem;
 }
@@ -107,4 +106,13 @@ h3{
 }
 .arrow.up:after {
   content: "\u25B4"
+}
+
+p{
+  line-height: 0.5;
+  display: block;
+    margin-block-start: 0.5rem;
+    margin-block-end: 1px;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
 }

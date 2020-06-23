@@ -167,14 +167,15 @@ def generate_menu():
 
                     # Suitable For
                     suitable = [
-                        ( escape(item["vegan"]), "Vegan" ),
-                        ( escape(item["vegetarian"]), "Vegetarian" ),
+                        ( escape(item["vegetarian"]), "(V)" ),
+                        ( escape(item["vegan"]), "(V+)" )
                     ]
 
                     # Add Suitable For
                     desc_suitable = [ addon[1] for addon in suitable if is_true(addon[0]) ]
+                    suitable = ''
                     if len(desc_suitable):
-                        item_description += "\nSuitable for: " + ', '.join(desc_suitable)
+                        suitable += ''.join(desc_suitable)
 
                     # Allergens
                     allergens = [
@@ -206,7 +207,7 @@ def generate_menu():
                     html += """
                         <div id="{}" class="menu-item">
                             <div class="menu-item-name">
-                                <div class="arrow"><i class="fas fa-chevron-down"></i> {}</div>
+                                <div class="arrow"><i class="fas fa-chevron-down"></i> {} {}</div>
                             </div>
                             <div class="menu-item-price"> {} </div>
                             <div>{}</div>
@@ -215,16 +216,22 @@ def generate_menu():
                             """.format(
                                 str(c) + str(i),
                                 item_name,
+                                suitable,
                                 item_price,
                                 item_description)
 
+                    
+
                     if not item['comments'] == '':
                         html += """
-                            <div>{}</div>
+                            <div><i>{}</i></div>
                         """.format(item['comments'])
+                    
+                    html += "<p><b>Nutrition Label:</b><p>"
+                    
                     if not item['calories'] == '':
                         html += """
-                            <div>{}</div>
+                            <div>{} kCal</div>
                         """.format(item['calories'])
 
                     for allergen in bool_allergens:
