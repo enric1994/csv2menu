@@ -73,6 +73,14 @@ def generate_menu():
         # Fill NA with empty values
         df = df.fillna('')
 
+        # Don't display unavailable items
+        for i, row in enumerate(df['available']):
+            # import pdb;pdb.set_trace()
+            if not is_true(row):
+                # if i ==19:
+                #     import pdb;pdb.set_trace()
+                df = df.drop(i)
+
         # Extract Categories
         categories = df['category'].unique().tolist()
         categories = [ c for c in categories if not c == '']
@@ -108,9 +116,10 @@ def generate_menu():
 
         # Move items with no category to the end
         desired_order_list = list(category_to_items.keys())
-        desired_order_list.remove(' ')
-        desired_order_list.append(' ')
-        category_to_items = {k: category_to_items[k] for k in desired_order_list}
+        if ' ' in desired_order_list:
+            desired_order_list.remove(' ')
+            desired_order_list.append(' ')
+            category_to_items = {k: category_to_items[k] for k in desired_order_list}
 
         for c, category in enumerate(category_to_items.keys()):
 
@@ -121,12 +130,6 @@ def generate_menu():
             category = escape(category)
 
             for i, item in enumerate(items):
-
-                # Don't display unavailable items
-                available = escape(item["available"])
-                if not is_true(available):
-                    continue
-
 
                 # Name
                 item_name = escape(item["name"])
