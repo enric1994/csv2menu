@@ -23,9 +23,6 @@ CSS_FILEPATH = join(STATIC_PATH, 'css', 'style.css')
 ICONS_FILEPATH = '../src/static/icons'
 OUTPUT_PATH = "/output/"
 
-arrow_up = "\u25B4"
-arrow_down = "\u25BE"
-
 
 @app.route('/menu', methods=['GET', 'POST'])
 def generate_menu():
@@ -44,6 +41,9 @@ def generate_menu():
         html = """
             <!DOCTYPE html>
             <html lang="en">
+                <head>
+                    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+                </head>
                 <body>
                 <style>
                     {}
@@ -206,7 +206,7 @@ def generate_menu():
                     html += """
                         <div id="{}" class="menu-item">
                             <div class="menu-item-name">
-                                <div class="arrow">{} {}</div>
+                                <div class="arrow"><i class="fas fa-chevron-down"></i> {}</div>
                             </div>
                             <div class="menu-item-price"> {} </div>
                             <div>{}</div>
@@ -214,7 +214,6 @@ def generate_menu():
                                 <div>
                             """.format(
                                 str(c) + str(i),
-                                arrow_down,
                                 item_name,
                                 item_price,
                                 item_description)
