@@ -20,7 +20,7 @@ app.config['SECRET_KEY'] = 'this is my secret key!'
 # Static path
 STATIC_PATH = abspath(join(dirname(abspath(__file__)), "static"))
 CSS_FILEPATH = join(STATIC_PATH, 'css', 'style.css')
-ICONS_FILEPATH = '../src/static/icons'
+ICONS_FILEPATH = 'https://storage.googleapis.com/godigital-icons/icons'
 OUTPUT_PATH = "/output/"
 
 
