@@ -218,8 +218,8 @@ def generate_menu():
                     # Comments: to be added
                     item_comments = escape(item["comments"])
 
-                    # Calories: to be formatted and added
-                    item_calories = escape(item["calories"])
+                    # Calories
+                    item_calories = format_calories(escape(item["calories"]))
 
                     html += """
                         <div id="{}" class="menu-item">
@@ -249,7 +249,7 @@ def generate_menu():
                     if not item['calories'] == '':
                         html += """
                             <div>{} kCal</div>
-                        """.format(item['calories'])
+                        """.format(item_calories)
 
                     for allergen in bool_allergens:
                         color = '_amber_' if allergen[0] else '_grey_'
@@ -347,6 +347,17 @@ def format_price(value):
 
     # Escape when it is a String
     return escape(value)
+
+def format_calories(value):
+    # Convert to String first
+    value = str(value).lower()
+
+    # Extract numbers only
+    values = re.findall(r"[-+]?[.]?[\d]+(?:,\d\d\d)*[\.]?\d*(?:[eE][-+]?\d+)?", value)
+    if len(values) == 0: return ''
+    value = values[0]
+    return value
+
 
 
 # If run in localhost

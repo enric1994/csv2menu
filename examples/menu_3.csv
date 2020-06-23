@@ -1,5 +1,5 @@
 available,name,description,price,category,subcategory,comments,calories,vegan,vegetarian,allergy_gluten,allergy_crustaceans,allergy_eggs,allergy_fish,allergy_peanuts,allergy_soybeans,allergy_milk,allergy_nuts,allergy_celery,allergy_mustard,allergy_sesame,allergy_sulphites,allergy_lupin,allergy_molluscs,columna trol
-YES,Chilli Gobi,Fresh cauliflower prepared with fresh herbs and chili peppers.,0,Menu of the day (10 euros),Starter,Very spicy,320,YES,YES,NO,NO,NO,NO,NO,NO,NO,NO,NO,NO,NO,NO,NO,NO,
+YES,Chilli Gobi,Fresh cauliflower prepared with fresh herbs and chili peppers.,0,Menu of the day (10 euros),Starter,Very spicy,320kcal,YES,YES,NO,NO,NO,NO,NO,NO,NO,NO,NO,NO,NO,NO,NO,NO,
 YES,Item alone,,,,,,10,NO,NO,NO,NO,NO,NO,NO,NO,NO,NO,NO,NO,NO,NO,NO,NO,
 NO,Gobi Manchurian,Crispy cauliflower in savory Manchurian sauce.,asd,Menu of the day (10 euros),Starter,,,NO,NO,SI,NO,NO,NO,NO,NO,NO,NO,NO,NO,NO,NO,NO,NO,
 YES,Sweet & Sour Vegetable,Fresh vegetables mixed with pineapples in a sweet and source sauce.,,Menu of the day (10 euros),Main course,,200kcal,YES,YES,NO,OUI,NO,NO,NO,NO,NO,NO,NO,NO,NO,NO,NO,NO,
