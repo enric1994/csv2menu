@@ -111,6 +111,12 @@ def generate_menu():
 
             for i, item in enumerate(items):
 
+                # Don't display unavailable items
+                available = escape(item["available"])
+                if not is_true(available):
+                    continue
+
+
                 # Name
                 item_name = escape(item["name"])
 
