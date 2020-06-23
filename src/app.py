@@ -76,6 +76,9 @@ def generate_menu():
         # Extract Categories
         categories = df['category'].unique().tolist()
         categories = [ c for c in categories if not c == '']
+        
+        # Define category for items with no category
+        categories.append(' ')
 
         # Extract all records
         raw_items = df.to_dict(orient='records')
@@ -87,6 +90,10 @@ def generate_menu():
         for item in raw_items:
             category = item['category']
             name = item['name']
+            # If no category but has name (and is available), add it to orphan category ' '
+            if category == '' and not name == '' and is_true(escape(item["available"])):
+                category = ' '
+                item['category'] = ' '
             if not category == '' and not name == '':
                 category_to_items[category].append(item)
 
@@ -99,9 +106,12 @@ def generate_menu():
         used_categories = set()
         used_subcategories = set()
 
-        # from pprint import pprint
-        # pprint(category_to_items)
-        #
+        # Move items with no category to the end
+        desired_order_list = list(category_to_items.keys())
+        desired_order_list.remove(' ')
+        desired_order_list.append(' ')
+        category_to_items = {k: category_to_items[k] for k in desired_order_list}
+
         for c, category in enumerate(category_to_items.keys()):
 
             # Items
