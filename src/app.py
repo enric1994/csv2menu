@@ -42,7 +42,8 @@ def generate_menu():
             <!DOCTYPE html>
             <html lang="en">
                 <head>
-                    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+                <title>GoDigital Menu</title>
+                    <script aria-hidden="true" src="https://kit.fontawesome.com/a076d05399.js"></script>
                 </head>
                 <body>
                 <style>
@@ -213,7 +214,7 @@ def generate_menu():
                     html += """
                         <div id="{}" class="menu-item">
                             <div class="menu-item-name">
-                                <div class="arrow"><i class="fas fa-chevron-down"></i> {} {}</div>
+                                <div class="arrow"><i class="fas fa-chevron-down" aria-hidden="true"></i> {} {}</div>
                             </div>
                             <div class="menu-item-price"> {} </div>
                             <div>{}</div>
@@ -230,10 +231,10 @@ def generate_menu():
 
                     if not item['comments'] == '':
                         html += """
-                            <div><i>{}</i></div>
+                            <div><em>{}</em></div>
                         """.format(item['comments'])
                     
-                    html += "<p><b>Nutrition Label:</b><p>"
+                    html += "<p><strong>Nutrition Label:</strong><p>"
                     
                     if not item['calories'] == '':
                         html += """
@@ -243,8 +244,8 @@ def generate_menu():
                     for allergen in bool_allergens:
                         color = '_amber_' if allergen[0] else '_grey_'
                         html += """
-                                    <img src="{}" class="icon" />
-                                """.format(join(ICONS_FILEPATH, allergen[1], 'PNG', allergen[1] + color + '50x50.png'))
+                                    <img alt="{}" src="{}" class="icon" />
+                                """.format(allergen[1], join(ICONS_FILEPATH, allergen[1], 'PNG', allergen[1] + color + '50x50.png'))
 
                     html += """
                                 </div>
