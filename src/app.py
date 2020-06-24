@@ -199,21 +199,39 @@ def generate_menu():
 
                     # Allergens
                     allergens = [
-                        ( escape(item["allergy_gluten"]), "wheat" ),
-                        ( escape(item["allergy_crustaceans"]), "crustacena" ),
-                        ( escape(item["allergy_eggs"]), "eggs" ),
-                        ( escape(item["allergy_fish"]), "fish" ),
-                        ( escape(item["allergy_peanuts"]), "peanut" ),
-                        ( escape(item["allergy_soybeans"]), "soya" ),
-                        ( escape(item["allergy_milk"]), "milk" ),
-                        ( escape(item["allergy_nuts"]), "treenut" ),
-                        ( escape(item["allergy_celery"]), "celery" ),
-                        ( escape(item["allergy_mustard"]), "mustard" ),
-                        ( escape(item["allergy_sesame"]), "sesame" ),
-                        ( escape(item["allergy_sulphites"]), "sulphurdioxide" ),
-                        ( escape(item["allergy_lupin"]), "lupin" ),
-                        ( escape(item["allergy_molluscs"]), "molluscs" ),
+                        ( escape(item["allergy_gluten"]), "Gluten" ),
+                        ( escape(item["allergy_crustaceans"]), "Crustaceans" ),
+                        ( escape(item["allergy_eggs"]), "Eggs" ),
+                        ( escape(item["allergy_fish"]), "Fish" ),
+                        ( escape(item["allergy_peanuts"]), "Peanuts" ),
+                        ( escape(item["allergy_soybeans"]), "Soybeans" ),
+                        ( escape(item["allergy_milk"]), "Milk" ),
+                        ( escape(item["allergy_nuts"]), "Nuts" ),
+                        ( escape(item["allergy_celery"]), "Celery" ),
+                        ( escape(item["allergy_mustard"]), "Mustard" ),
+                        ( escape(item["allergy_sesame"]), "Sesame Seeds" ),
+                        ( escape(item["allergy_sulphites"]), "Sulphites" ),
+                        ( escape(item["allergy_lupin"]), "Lupin" ),
+                        ( escape(item["allergy_molluscs"]), "Molluscs" ),
                     ]
+
+                    # Allergens prefix
+                    allergens_prefix={
+                        "Gluten": 'G',
+                        "Crustaceans": 'C',
+                        "Eggs": 'E',
+                        "Fish": 'F',
+                        "Peanuts": 'P',
+                        "Soybeans": 'S',
+                        "Milk": 'MK',
+                        "Nuts": 'N',
+                        "Celery": 'CY',
+                        "Mustard": 'MD',
+                        "Sesame Seeds": 'SS',
+                        "Sulphites": 'SP',
+                        "Lupin": 'L',
+                        "Molluscs": 'M',
+                    }
 
                     # Add Allergens
                     bool_allergens = [ (is_true(x), y) for x,y in allergens ]
@@ -253,12 +271,21 @@ def generate_menu():
                         html += """
                             <div>{} kCal</div>
                         """.format(item_calories)
+                    
+                    # Check which is the last allergen active
+                    active_allergens = [x[1] for x in bool_allergens if x[0]]
+                    if len(active_allergens) >= 1:
+                        last_allergen = active_allergens[-1]
+                    else:
+                        last_allergen = 'none'
 
                     for allergen in bool_allergens:
-                        color = '_amber_' if allergen[0] else '_grey_'
-                        html += """
-                                    <img alt="{}" src="{}" class="icon" />
-                                """.format(allergen[1], join(ICONS_FILEPATH, allergen[1], 'PNG', allergen[1] + color + '50x50.png'))
+                        if allergen[0]:
+                            if allergen[1] != last_allergen:
+                                comma = ', '
+                            else:
+                                comma = ''
+                            html+= "<b>({})</b>&emsp;{}{}".format(allergens_prefix[allergen[1]], allergen[1], comma)
 
                     html += """
                                 </div>
@@ -344,9 +371,6 @@ def format_price(value):
 
     # Format it with 2 decimals
     value = '{:.2f}'.format(float(value)) if float(value) > 0 else ''
-
-    # Remove '.00' if present
-    value = value.rstrip('.00') if value.endswith('.00') else value
 
     # Escape when it is a String
     return escape(value)
