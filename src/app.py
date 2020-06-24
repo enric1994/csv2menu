@@ -20,7 +20,6 @@ app.config['SECRET_KEY'] = 'this is my secret key!'
 # Static path
 STATIC_PATH = abspath(join(dirname(abspath(__file__)), "static"))
 CSS_FILEPATH = join(STATIC_PATH, 'css', 'style.css')
-ICONS_FILEPATH = 'https://storage.googleapis.com/godigital-icons/icons'
 OUTPUT_PATH = "/output/"
 
 
@@ -265,7 +264,10 @@ def generate_menu():
                             <div><em>{}</em></div>
                         """.format(item['comments'])
                     
-                    html += "<p><strong>Nutrition Label:</strong><p>"
+                    active_allergens = [x[1] for x in bool_allergens if x[0]]
+
+                    if len(active_allergens) > 0 or not item['calories'] == '':
+                        html += "<p><strong>Nutrition Label:</strong><p>"
                     
                     if not item['calories'] == '':
                         html += """
@@ -273,7 +275,7 @@ def generate_menu():
                         """.format(item_calories)
                     
                     # Check which is the last allergen active
-                    active_allergens = [x[1] for x in bool_allergens if x[0]]
+                    
                     if len(active_allergens) >= 1:
                         last_allergen = active_allergens[-1]
                     else:
@@ -286,6 +288,9 @@ def generate_menu():
                             else:
                                 comma = ''
                             html+= "<b>({})</b>&emsp;{}{}".format(allergens_prefix[allergen[1]], allergen[1], comma)
+
+                    if item['comments'] == '' and item['calories'] == '' and len(active_allergens) == 0:
+                        html += 'No information.'
 
                     html += """
                                 </div>
