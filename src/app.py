@@ -304,6 +304,8 @@ def generate_menu():
                 Menu made using <a href=https://godigital.menu target='_blank'>godigital.menu</a>
             </div>"""
 
+        # HTML ID (hidden)
+        html += "<div style='color:white;'>Menu ID: {}</div>".format(output_id)
 
         # Parse HTML with BeautifulSoup
         soup = BeautifulSoup(html, "html.parser")
