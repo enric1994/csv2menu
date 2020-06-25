@@ -1,12 +1,26 @@
-html,body {
+html, body {
   margin:0;
   padding:0;
   text-align: center;
 }
 
+h1 {
+  color: black;
+  font-weight: bold;
+  text-align: Center;
+  font-size: 3rem;
+}
+
+h3 {
+  color: black;
+  font-weight: bold;
+  text-align: Center;
+  font-size: 3rem;
+}
+
 .menu-body {
-  /* max-width: 60vw; */
-  /* margin: 0 auto; */
+  /* max-width: 60vw;
+  margin: 0 auto; */
   padding: 10;
   padding-right: 7vw;
   padding-left: 7vw;
@@ -26,6 +40,7 @@ html,body {
   margin: 20px 0;
   text-align: Center;
 }
+
 .menu-subsection-title {
   font-family: georgia;
   font-size: 1.8rem;
@@ -47,20 +62,30 @@ html,body {
 
 .menu-item {
   margin: 35px 0;
-  font-size: 1.5rem;
   text-align: left;
 }
 
-.menu-item-name{
+.menu-item:hover {
+  cursor: pointer;
+  /* color: darkblue; */
+}
+
+.menu-item-name {
   font-family: helvetica;
+  font-size: 1.5rem;
   font-weight: bold;
   border-bottom: 1.7px dotted rgb(213, 213, 213);
-  margin-right: 4.5rem;
+  /* margin-right: 4.5rem; */
+  /* padding-bottom: 5px;
+  color: #4c4c4c;
+  font-weight: 700; */
 }
 
 .menu-item-description {
   font-size: 1.5rem;
-  line-height: 1.5rem;
+  /* line-height: 1.5rem; */
+  /* margin-top: 10px; */
+  color: #666;
 }
 
 .menu-item-price{
@@ -71,24 +96,9 @@ html,body {
   font-size: 3rem;
 }
 
-h1{
-  color: black;
-  font-weight: bold;
-  text-align: Center;
-  font-size: 3rem;
-}
-
-h3{
-  color: black;
-  font-weight: bold;
-  text-align: Center;
-  font-size: 3rem;
-}
-
-.footer {
-  text-align: center;
-  font-family: arial;
-  font-size: 1rem;
+.menu-click-label {
+  font-size: 0.75rem; 
+  color: #aaa
 }
 
 .smalldesc {
@@ -98,21 +108,43 @@ h3{
 }
 
 .smalldesc.expand {
-  max-height: 300px;
+  max-height: 500px;
 }
 
-.arrow {
-  content: "\u25BE"
-}
-.arrow.up:after {
-  content: "\u25B4"
+.menu-nutrional-label {
+  font-size: 2rem; 
+  color: #aaa
 }
 
-p{
+.menu-item-calories {
+  font-size: 2rem;
+}
+
+.menu-item-allergens {
+  font-size: 2rem;
+}
+
+.item-allergen-title {
+  font-size: 1rem;
+  margin-bottom: 5px;
+}
+
+.item-allergen-description {
+  font-size: 1rem;
+  margin-bottom: 5px;
+}
+
+/* p {
   line-height: 0.5;
   display: block;
-    margin-block-start: 0.5rem;
-    margin-block-end: 1px;
-    margin-inline-start: 0px;
-    margin-inline-end: 0px;
+  margin-block-start: 0.5rem;
+  margin-block-end: 1px;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+} */
+
+.footer {
+  text-align: center;
+  font-family: arial;
+  font-size: 1rem;
 }
