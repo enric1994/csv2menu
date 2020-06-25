@@ -106,7 +106,7 @@ h3 {
 }
 
 .menu-click-label {
-  font-size: 0.75rem; 
+  font-size: 0.75rem;
   color: #aaa
 }
 
@@ -121,7 +121,7 @@ h3 {
 }
 
 .menu-nutrional-label {
-  font-size: 2rem; 
+  font-size: 2rem;
   color: #aaa
 }
 
@@ -157,9 +157,127 @@ h3 {
   font-family: arial;
   font-size: 1rem;
 }
+
+
+.modal {
+  display: block;
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  width: 100%;
+  height: 100%;
+  background-color: rgb(0, 0, 0);
+  background-color: rgba(0, 0, 0, 0.5);
+  transform: translate(-50%, -50%);
+}
+.modal-content {
+  position: relative;
+  background-color: white;
+  padding: 20px;
+  margin: auto;
+  width: 75%;
+  -webkit-animation-name: animatetop;
+  -webkit-animation-duration: 0.4s;
+  animation-name: animatetop;
+  animation-duration: 0.4s
+}
+.modal-text {
+  font-family: helvetica;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+.modal-header-text {
+  font-family: helvetica;
+  font-size: 3rem;
+  font-weight: bold;
+}
+.modal-footer-text {
+  font-family: helvetica;
+  font-size: 1.6rem;
+  font-weight: bold;
+}
+
+
+.close-btn {
+  float: right;
+  color: lightgray;
+  font-size: 24px;
+  font-weight: bold;
+}
+.close-btn:hover {
+  color: darkgray;
+}
+
+
+
+.modal-body {padding: 2px 16px;}
+
+.modal-footer {
+  padding: 2px 16px;
+  background-color: #D6EBE3;
+}
+@-webkit-keyframes animatetop {
+  from {top:-300px; opacity:0}
+  to {top:0; opacity:1}
+}
+@keyframes animatetop {
+  from {top:-300px; opacity:0}
+  to {top:0; opacity:1}
+}
+
+
+input[type=text], select {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+input[type=submit] {
+  width: 100%;
+  background-color: #4CAF50;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+input[type=submit]:hover {
+  background-color: #45a049;
+}
   </style>
   <meta content="text/html; charset=utf-8" http-equiv="Content-Type"/>
   <div class="menu-body">
+   <div class="modal">
+    <div class="modal-content">
+     <div class="modal-header">
+      <span class="close-btn">
+       ×
+      </span>
+      <div class="modal-header-text">
+       WARNING
+      </div>
+     </div>
+     <div class="modal-body">
+      <div class="modal-text">
+       In Example Restaurant we want to help to you stay away from the COVID 19. Insert your email if you want to receive a warning in case someone infected attended our restaurant the same day. We will delete your data after incubation time!
+      </div>
+      <input id="email" placeholder="Your email..." type="text"/>
+      <br/>
+      <br/>
+     </div>
+     <div class="modal-footer">
+      <div class="modal-footer-text">
+       Add me to tracking list
+      </div>
+     </div>
+    </div>
+   </div>
    <div>
     <h1>
      Example Restaurant
@@ -586,8 +704,20 @@ h3 {
   </div>
   <script>
    function clickItem(x) {
-            x.querySelector('.smalldesc').classList.toggle('expand');
-        }
+                x.querySelector('.smalldesc').classList.toggle('expand');
+            }
+
+            let modal = document.querySelector(".modal")
+            let closeBtn = document.querySelector(".close-btn")
+
+            closeBtn.onclick = function(){
+              modal.style.display = "none"
+            }
+            window.onclick = function(e){
+              if(e.target == modal){
+                modal.style.display = "none"
+              }
+            }
   </script>
   <div class="footer">
    Menu made using

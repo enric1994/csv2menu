@@ -97,7 +97,7 @@ h3 {
 }
 
 .menu-click-label {
-  font-size: 0.75rem; 
+  font-size: 0.75rem;
   color: #aaa
 }
 
@@ -112,7 +112,7 @@ h3 {
 }
 
 .menu-nutrional-label {
-  font-size: 2rem; 
+  font-size: 2rem;
   color: #aaa
 }
 
@@ -147,4 +147,97 @@ h3 {
   text-align: center;
   font-family: arial;
   font-size: 1rem;
+}
+
+
+.modal {
+  display: block;
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  width: 100%;
+  height: 100%;
+  background-color: rgb(0, 0, 0);
+  background-color: rgba(0, 0, 0, 0.5);
+  transform: translate(-50%, -50%);
+}
+.modal-content {
+  position: relative;
+  background-color: white;
+  padding: 20px;
+  margin: auto;
+  width: 75%;
+  -webkit-animation-name: animatetop;
+  -webkit-animation-duration: 0.4s;
+  animation-name: animatetop;
+  animation-duration: 0.4s
+}
+.modal-text {
+  font-family: helvetica;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+.modal-header-text {
+  font-family: helvetica;
+  font-size: 3rem;
+  font-weight: bold;
+}
+.modal-footer-text {
+  font-family: helvetica;
+  font-size: 1.6rem;
+  font-weight: bold;
+}
+
+
+.close-btn {
+  float: right;
+  color: lightgray;
+  font-size: 24px;
+  font-weight: bold;
+}
+.close-btn:hover {
+  color: darkgray;
+}
+
+
+
+.modal-body {padding: 2px 16px;}
+
+.modal-footer {
+  padding: 2px 16px;
+  background-color: #D6EBE3;
+}
+@-webkit-keyframes animatetop {
+  from {top:-300px; opacity:0}
+  to {top:0; opacity:1}
+}
+@keyframes animatetop {
+  from {top:-300px; opacity:0}
+  to {top:0; opacity:1}
+}
+
+
+input[type=text], select {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+input[type=submit] {
+  width: 100%;
+  background-color: #4CAF50;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+input[type=submit]:hover {
+  background-color: #45a049;
 }
