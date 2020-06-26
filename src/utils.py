@@ -49,7 +49,11 @@ def render_modal(name):
                     <input type="text" id="email" placeholder="Your email..."><br><br>
                 </div>
                 <div class="modal-footer">
-                    <div class="modal-footer-text">Add me to tracking list</div>
+                    <div
+                        class="modal-footer-text"
+                        onClick="sendEmail()">
+                            Add me to tracking list
+                    </div>
                 </div>
             </div>
         </div>
@@ -80,12 +84,16 @@ def render(data, restaurant_name, output_id):
             <style>
                 {}
             </style>
+            """.format(css)
+
+
+    html += render_modal(restaurant_name)
+
+
+    html += """
             <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
             <div class="menu-body">
-        """.format(
-            css
-        )
-    html += render_modal(restaurant_name)
+        """
     # Restaurant name
     html += """
         <div>
@@ -267,24 +275,47 @@ def render(data, restaurant_name, output_id):
 
     # Add function to expand item
     html += """
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <script>
-            function clickItem(x) {
+            function clickItem(x) {{
                 x.querySelector('.smalldesc').classList.toggle('expand');
-            }
+            }}
 
             let modal = document.querySelector(".modal")
             let closeBtn = document.querySelector(".close-btn")
 
-            closeBtn.onclick = function(){
-              modal.style.display = "none"
-            }
-            window.onclick = function(e){
-              if(e.target == modal){
-                modal.style.display = "none"
-              }
-            }
+            closeBtn.onclick = function(){{
+              modal.style.display = "none";
+            }}
+            window.onclick = function(e){{
+              if(e.target == modal){{
+                modal.style.display = "none";
+
+              }}
+            }}
+            function sendEmail(){{
+                var input = document.getElementById("email").value;
+                if (input.length > 0) {{
+                    console.log(input);
+
+                    // Hide modal
+                    modal.style.display = "none";
+
+                    // Add email to database
+                    $.ajax({{
+                        url: "https://api.godigital.menu/tracking",
+                        type: "POST",
+                        headers: {{
+                                'Content-Type': 'text/plain',
+                                'restaurantname': '{}',
+                                'restaurantid': '{}',
+                                'customeremail': input
+                        }}
+                    }});
+                }}
+            }}
         </script>
-    """
+    """.format(restaurant_name, output_id)
 
     # Footer
     html += """

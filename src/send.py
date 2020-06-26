@@ -3,7 +3,7 @@ import requests
 filename = '/examples/menu.csv'
 headers = {
     'Content-Type': 'text/plain',
-    'restaurant_name': 'Example Restaurant',
+    'restaurant_name': 'Restaurant_Name',
     'output_id': '123'
 }
 url = "http://localhost:5000/menu"
