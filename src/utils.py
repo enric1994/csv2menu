@@ -277,10 +277,62 @@ def render(data, restaurant_name, output_id):
     html += """
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <script>
+
             function clickItem(x) {{
                 x.querySelector('.smalldesc').classList.toggle('expand');
             }}
 
+            function setCookie(cname, exhours) {{
+                var d = new Date();
+                d.setTime(d.getTime() + (exhours*60*60*1000));
+                var expires = "expires="+ d.toUTCString();
+                document.cookie = cname + "=" + "true" + ";" + expires + ";path=/";
+            }}
+            function getCookie(cname) {{
+                var name = cname + "=";
+                var ca = document.cookie.split(';');
+                for(var i = 0; i < ca.length; i++) {{
+                    var c = ca[i];
+                    while (c.charAt(0) == ' ') {{
+                      c = c.substring(1);
+                    }}
+                    if (c.indexOf(name) == 0) {{
+                      return c.substring(name.length, c.length);
+                    }}
+                }}
+                return "";
+            }}
+            function checkCookie() {{
+                var cookie_modal = getCookie("modal");
+                if (cookie_modal != "") {{
+                    modal.style.display = "none";
+                }} else {{
+                  setCookie("modal", 1);
+                }}
+            }}
+
+            // Tracking function
+            function sendEmail(){{
+                var input = document.getElementById("email").value;
+                if (input.length > 0) {{
+                    // Hide modal
+                    modal.style.display = "none";
+
+                    // Add email to database
+                    $.ajax({{
+                        url: "https://api.godigital.menu/tracking",
+                        type: "POST",
+                        headers: {{
+                            'Content-Type': 'text/plain',
+                            'restaurantname': '{}',
+                            'restaurantid': '{}',
+                            'customeremail': input
+                        }}
+                    }});
+                }}
+            }}
+
+            // Modal functions
             let modal = document.querySelector(".modal")
             let closeBtn = document.querySelector(".close-btn")
 
@@ -293,27 +345,10 @@ def render(data, restaurant_name, output_id):
 
               }}
             }}
-            function sendEmail(){{
-                var input = document.getElementById("email").value;
-                if (input.length > 0) {{
-                    console.log(input);
 
-                    // Hide modal
-                    modal.style.display = "none";
+            // Set cookie in order to avoid showing modal multiple times within same hour
+            checkCookie();
 
-                    // Add email to database
-                    $.ajax({{
-                        url: "https://api.godigital.menu/tracking",
-                        type: "POST",
-                        headers: {{
-                                'Content-Type': 'text/plain',
-                                'restaurantname': '{}',
-                                'restaurantid': '{}',
-                                'customeremail': input
-                        }}
-                    }});
-                }}
-            }}
         </script>
     """.format(restaurant_name, output_id)
 
