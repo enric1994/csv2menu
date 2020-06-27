@@ -39,7 +39,7 @@ def render_modal(name):
         <div class="modal">
             <div class="modal-content">
                 <div class="modal-header">
-                    <span class="close-btn">&times;</span>
+                    <a href="#close" class="close-btn">&times;</a>
                     <div class="modal-header-text">WARNING</div>
                 </div>
                 <div class="modal-body">
@@ -286,7 +286,8 @@ def render(data, restaurant_name, output_id):
                 var d = new Date();
                 d.setTime(d.getTime() + (exhours*60*60*1000));
                 var expires = "expires="+ d.toUTCString();
-                document.cookie = cname + "=" + "true" + ";" + expires + ";path=/";
+                var cookiee = cname + "=" + "true" + "," + expires + ",path=/";
+                document.cookie = cookiee;
             }}
             function getCookie(cname) {{
                 var name = cname + "=";
