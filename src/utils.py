@@ -34,32 +34,6 @@ allergens_prefix = {
     "Molluscs": 'M',
 }
 
-def render_modal(name):
-    return """
-        <div class="modal">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <a href="#close" class="close-btn">&times;</a>
-                    <div class="modal-header-text">WARNING</div>
-                </div>
-                <div class="modal-body">
-                    <div class="modal-text">
-                        In {} we want to help to you stay away from the COVID 19. Insert your email if you want to receive a warning in case someone infected attended our restaurant the same day. We will delete your data after incubation time!
-                    </div>
-                    <input type="text" id="email" placeholder="Your email..."><br><br>
-                </div>
-                <div class="modal-footer">
-                    <div
-                        class="modal-footer-text"
-                        onClick="sendEmail()">
-                            Add me to tracking list
-                    </div>
-                </div>
-            </div>
-        </div>
-
-    """.format(name)
-
 
 def render(data, restaurant_name, output_id):
     """ Render HTML """
@@ -86,14 +60,15 @@ def render(data, restaurant_name, output_id):
             </style>
             """.format(css)
 
-
+    # Render HTML Modal Pop-up
     html += render_modal(restaurant_name)
 
-
+    # Add meta tag and open body
     html += """
             <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
             <div class="menu-body">
         """
+    
     # Restaurant name
     html += """
         <div>
@@ -152,7 +127,7 @@ def render(data, restaurant_name, output_id):
         desired_order_list.append(' ')
         category_to_items = {k: category_to_items[k] for k in desired_order_list}
 
-    for c, category in enumerate(category_to_items.keys()):
+    for category in category_to_items.keys():
 
         # Items
         items = category_to_items[category]
@@ -160,7 +135,7 @@ def render(data, restaurant_name, output_id):
         # Escape Category
         category = escape(category)
 
-        for i, item in enumerate(items):
+        for item in items:
 
             # Name
             item_name = escape(item["name"])
@@ -289,6 +264,7 @@ def render(data, restaurant_name, output_id):
                 var cookiee = cname + "=" + "true" + "," + expires + ",path=/";
                 document.cookie = cookiee;
             }}
+
             function getCookie(cname) {{
                 var name = cname + "=";
                 var ca = document.cookie.split(';');
@@ -303,6 +279,7 @@ def render(data, restaurant_name, output_id):
                 }}
                 return "";
             }}
+
             function checkCookie() {{
                 var cookie_modal = getCookie("modal");
                 if (cookie_modal != "") {{
@@ -316,6 +293,7 @@ def render(data, restaurant_name, output_id):
             function sendEmail(){{
                 var input = document.getElementById("email").value;
                 if (input.length > 0) {{
+                    
                     // Hide modal
                     modal.style.display = "none";
 
@@ -340,6 +318,7 @@ def render(data, restaurant_name, output_id):
             closeBtn.onclick = function(){{
               modal.style.display = "none";
             }}
+
             window.onclick = function(e){{
               if(e.target == modal){{
                 modal.style.display = "none";
@@ -377,30 +356,39 @@ def render(data, restaurant_name, output_id):
         html_file.write(html)
 
 
+def render_modal(restaurant_name):
+    """ Render Modal """
+    
+    return """
+        <div class="modal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <a href="#close" class="close-btn">&times;</a>
+                    <div class="modal-header-text">WARNING</div>
+                </div>
+                <div class="modal-body">
+                    <div class="modal-text">
+                        In {} we want to help to you stay away from the COVID 19. Insert your email if you want to receive a warning in case someone infected attended our restaurant the same day. We will delete your data after incubation time!
+                    </div>
+                    <input type="text" id="email" placeholder="Your email..."><br><br>
+                </div>
+                <div class="modal-footer">
+                    <div
+                        class="modal-footer-text"
+                        onClick="sendEmail()">
+                            Add me to tracking list
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    """.format(restaurant_name)
+
+
 def is_true(value):
     """ Is this value True? """
 
     return value.lower() in [ 'yes', 'y', 'sí', 'si', 'oui' ]
-
-
-def format_suitable(item):
-    """ Format suitable """
-
-    # Read inputs
-    suitable = [
-        ( escape(item["vegetarian"]), "V" ),
-        ( escape(item["vegan"]), "Ve" )
-    ]
-
-    # Extract true values
-    values = [ acronym for text, acronym in suitable if is_true(text) ]
-    if len(values) == 0: return ''
-
-    # Format output
-    value = '(' + ', '.join(values) + ')'
-
-    # Escape when it is a String
-    return escape(value)
 
 
 def format_price(value):
@@ -433,8 +421,28 @@ def format_calories(value):
     if len(values) == 0: return ''
     value = values[0]
 
-    # Format it
-    value = '{} kCal'.format(value) if float(value) > 0 else ''
+    # Format it with no decimals
+    value = '{:.0f} kCal'.format(float(value)) if float(value) > 0 else ''
+
+    # Escape when it is a String
+    return escape(value)
+
+
+def format_suitable(item):
+    """ Format suitable """
+
+    # Read inputs
+    suitable = [
+        ( escape(item["vegetarian"]), "V" ),
+        ( escape(item["vegan"]), "Ve" )
+    ]
+
+    # Extract true values
+    values = [ acronym for text, acronym in suitable if is_true(text) ]
+    if len(values) == 0: return ''
+
+    # Format output
+    value = '(' + ', '.join(values) + ')'
 
     # Escape when it is a String
     return escape(value)

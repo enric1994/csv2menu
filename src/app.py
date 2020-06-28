@@ -10,15 +10,15 @@ app = Flask(__name__)
 def generate_menu():
     """ Generate Menu from CSV """
 
-    # Read Request Data: CSV in bytes
-    data = request.data
-    restaurant_name = request.headers['restaurant_name']
-    output_id = request.headers['output_id']
-    
-    # Render HTML
-    render(data, restaurant_name, output_id)
-
     try:
+
+        # Read Request Data: CSV in bytes
+        data = request.data
+        restaurant_name = request.headers['restaurant_name']
+        output_id = request.headers['output_id']
+        
+        # Render HTML
+        render(data, restaurant_name, output_id)
 
         # Hurray!
         return '200'
