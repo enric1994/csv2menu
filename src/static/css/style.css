@@ -2,20 +2,21 @@ html, body {
   margin: 0;
   padding: 0;
   text-align: center;
+  font-size: 100%;
 }
 
 h1 {
   color: black;
   font-weight: bold;
   text-align: Center;
-  font-size: 3rem;
+  font-size: 2.5rem;
 }
 
 h3 {
   color: black;
   font-weight: bold;
   text-align: Center;
-  font-size: 3rem;
+  font-size: 2rem;
 }
 
 .menu-body {
@@ -32,7 +33,7 @@ h3 {
 
 .menu-section-title {
   font-family: georgia;
-  font-size: 2.2rem;
+  font-size: 2rem;
   display: block;
   font-weight:normal;
   margin: 20px 0;
@@ -50,7 +51,7 @@ h3 {
 
 .menu-section-title-special {
   font-family: georgia;
-  font-size: 2.5rem;
+  font-size: 1.8rem;
   display: block;
   font-weight:normal;
   margin: 20px 0;
@@ -65,24 +66,18 @@ h3 {
 
 .menu-item:hover {
   cursor: pointer;
-  /* color: darkblue; */
+  color: #aaa;
 }
 
 .menu-item-name {
   font-family: helvetica;
-  font-size: 1.5rem;
+  font-size: 1.25rem;
   font-weight: bold;
   border-bottom: 1.7px dotted rgb(213, 213, 213);
-  /* margin-right: 4.5rem; */
-  /* padding-bottom: 5px;
-  color: #4c4c4c;
-  font-weight: 700; */
 }
 
 .menu-item-description {
-  font-size: 1.5rem;
-  /* line-height: 1.5rem; */
-  /* margin-top: 10px; */
+  font-size: 1.25rem;
   color: #666;
 }
 
@@ -90,8 +85,8 @@ h3 {
   float: right;
   font-weight: bold;
   font-family: arial;
-  margin-top: -3.1rem;
-  font-size: 3rem;
+  margin-top: -1.7rem;
+  font-size: 1.5rem;
 }
 
 .menu-click-label {
@@ -99,41 +94,41 @@ h3 {
   color: #aaa
 }
 
-.smalldesc {
-  max-height: 0px;
+.collapsible {
+  max-height: 0;
   overflow: hidden;
-  transition: all 0.5s ease;
+  transition: max-height 0.2s ease-out;
 }
 
-.smalldesc.expand {
-  max-height: 500px;
+.collapsible.expand {
+  max-height: 300%;
 }
 
 .menu-nutrional-label {
-  font-size: 200%;
+  font-size: 1rem;
   color: #aaa
 }
 
 .menu-item-calories {
-  font-size: 200%;
+  font-size: 1rem;
 }
 
 .menu-item-allergens {
-  font-size: 200%;
+  font-size: 1rem;
 }
 
 .item-allergen-title {
-  font-size: 200%;
+  font-size: 1rem;
   margin-bottom: 5px;
 }
 
 .item-allergen-description {
-  font-size: 200%;
+  font-size: 1rem;
   margin-bottom: 5px;
 }
 
 .menu-item-comments {
-  font-size: 200%;
+  font-size: 1rem;
   margin-bottom: 5px;
 }
 

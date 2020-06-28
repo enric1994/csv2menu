@@ -48,6 +48,7 @@ def render(data, restaurant_name, output_id):
     # Start HTML output
     # <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     # <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    # <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     html = """
         <!DOCTYPE html>
         <html lang="en">
@@ -66,6 +67,7 @@ def render(data, restaurant_name, output_id):
     # Add meta tag and open body
     html += """
             <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
             <div class="menu-body">
         """
     
@@ -218,7 +220,7 @@ def render(data, restaurant_name, output_id):
                         <small class="menu-click-label">
                             {}
                         </small>
-                        <div class="smalldesc">
+                        <div class="collapsible">
                             <small class="menu-nutrional-label">
                                 {}
                             </small>
@@ -257,7 +259,7 @@ def render(data, restaurant_name, output_id):
         <script>
 
             function clickItem(x) {{
-                x.querySelector('.smalldesc').classList.toggle('expand');
+                x.querySelector('.collapsible').classList.toggle('expand');
             }}
 
             function setCookie(cname, exhours) {{
