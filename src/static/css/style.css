@@ -105,7 +105,7 @@ h3 {
 
 .menu-nutrional-label {
   font-size: 1rem;
-  color: #aaa
+  font-weight: bold;
 }
 
 .menu-item-calories {
@@ -150,35 +150,36 @@ h3 {
 .modal-content{
     position: relative;
     background-color: white;
-    padding: 30px;
-    margin: auto;
-    left: 50%;
+    padding: 10px;
+    margin: 5px;
+    left: 49%;
     top: 50%;
     width: 90%;
     -webkit-animation-name: animatetop;
     -webkit-animation-duration: 0.4s;
     animation-name: animatetop;
-    transform: translate(-50%, -50%);
+    transform: translate(-50%, -49%);
     animation-duration: 0.4¡6s;
     border-radius: 20px;
   }
 
 .modal-text {
   font-family: helvetica;
-  font-size: 3rem;
+  font-size: 1.15rem;
   font-weight: bold;
 }
 
+
 .modal-header-text {
   font-family: helvetica;
-  font-size: 5rem;
+  font-size: 2rem;
   font-weight: bold;
 }
 
 .modal-footer-text {
   padding: 16px;
   font-family: helvetica;
-  font-size: 3rem;
+  font-size: 1.25rem;
   font-weight: bold;
 }
 
@@ -216,28 +217,23 @@ h3 {
   to {top:50%; opacity:1}
 }
 
-input[type=text], select {
+
+.modal-num {
+  width: 90%;
+  padding: 10px;
+  font-family: helvetica;
+  font-size: 1.25rem;
+}
+input, select {
   width: 100%;
-  padding: 12px 20px;
-  margin: 8px 0;
+  padding: 10px;
+  margin: 8px;
   display: inline-block;
   border: 1px solid #ccc;
-  font-size: 3rem;
   border-radius: 10px;
   box-sizing: border-box;
 }
 
-input[type=submit] {
-  width: 100%;
-  background-color: #4CAF50;
-  color: white;
-  padding: 14px 20px;
-  margin: 8px 0;
-  border: none;
-  font-size: 3rem;
-  border-radius: 10px;
-  cursor: pointer;
-}
 
 input[type=submit]:hover {
   background-color: #45a049;

@@ -114,7 +114,7 @@ h3 {
 
 .menu-nutrional-label {
   font-size: 1rem;
-  color: #aaa
+  font-weight: bold;
 }
 
 .menu-item-calories {
@@ -159,35 +159,36 @@ h3 {
 .modal-content{
     position: relative;
     background-color: white;
-    padding: 30px;
-    margin: auto;
-    left: 50%;
+    padding: 10px;
+    margin: 5px;
+    left: 49%;
     top: 50%;
     width: 90%;
     -webkit-animation-name: animatetop;
     -webkit-animation-duration: 0.4s;
     animation-name: animatetop;
-    transform: translate(-50%, -50%);
+    transform: translate(-50%, -49%);
     animation-duration: 0.4¡6s;
     border-radius: 20px;
   }
 
 .modal-text {
   font-family: helvetica;
-  font-size: 3rem;
+  font-size: 1.15rem;
   font-weight: bold;
 }
 
+
 .modal-header-text {
   font-family: helvetica;
-  font-size: 5rem;
+  font-size: 2rem;
   font-weight: bold;
 }
 
 .modal-footer-text {
   padding: 16px;
   font-family: helvetica;
-  font-size: 3rem;
+  font-size: 1.25rem;
   font-weight: bold;
 }
 
@@ -225,28 +226,23 @@ h3 {
   to {top:50%; opacity:1}
 }
 
-input[type=text], select {
+
+.modal-num {
+  width: 90%;
+  padding: 10px;
+  font-family: helvetica;
+  font-size: 1.25rem;
+}
+input, select {
   width: 100%;
-  padding: 12px 20px;
-  margin: 8px 0;
+  padding: 10px;
+  margin: 8px;
   display: inline-block;
   border: 1px solid #ccc;
-  font-size: 3rem;
   border-radius: 10px;
   box-sizing: border-box;
 }
 
-input[type=submit] {
-  width: 100%;
-  background-color: #4CAF50;
-  color: white;
-  padding: 14px 20px;
-  margin: 8px 0;
-  border: none;
-  font-size: 3rem;
-  border-radius: 10px;
-  cursor: pointer;
-}
 
 input[type=submit]:hover {
   background-color: #45a049;
@@ -344,23 +340,23 @@ input[type=submit]:hover {
   <div class="modal">
    <div class="modal-content">
     <div class="modal-header">
-     <a class="close-btn" href="#close">
-      ×
-     </a>
+     <div class="close-btn">
+      x
+     </div>
      <div class="modal-header-text">
-      WARNING
+      COVID-19
      </div>
     </div>
     <div class="modal-body">
      <div class="modal-text">
-      In Restaurant_Name we want to help to you stay away from the COVID 19. Insert your email if you want to receive a warning in case someone infected attended our restaurant the same day. We will delete your data after incubation time!
+      At Restaurant_Name_ we want to keep you safe and free of coronavirus. If you want to receive an SMS in case of detecting a positive case the same day that you are in the restaurant, add your number here below. Your data will be deleted after the incubation period.
      </div>
-     <input id="email" placeholder="Your email..." type="text"/>
-     <br/>
-     <br/>
+     <div class="modal-num">
+      <input id="phone" placeholder="+00555000555" type="tel"/>
+     </div>
     </div>
     <div class="modal-footer">
-     <div class="modal-footer-text" onclick="sendEmail()">
+     <div class="modal-footer-text" onclick="sendPhone()">
       Add me to tracking list
      </div>
     </div>
@@ -371,7 +367,7 @@ input[type=submit]:hover {
   <div class="menu-body">
    <div>
     <h1>
-     Restaurant_Name
+     Restaurant_Name_
     </h1>
    </div>
    <div class="menu-section">
@@ -868,9 +864,9 @@ input[type=submit]:hover {
                 x.querySelector('.collapsible').classList.toggle('expand');
             }
 
-            function validateEmail(email) {
-                const re = /^(([^<>()[\]\.,;:\s@"]+(\.[^<>()[\]\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-                return re.test(email);
+            function validatePhone(phone) {
+                const re = /^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\s\./0-9]*$/;
+                return re.test(phone);
             }
 
             function setCookie(cname, exhours) {
@@ -906,9 +902,9 @@ input[type=submit]:hover {
             }
 
             // Tracking function
-            function sendEmail(){
-                var input = document.getElementById("email").value;
-                if (validateEmail(input)) {
+            function sendPhone(){
+                var input = document.getElementById("phone").value;
+                if (validatePhone(input)) {
 
                     // Hide modal
                     modal.style.display = "none";
@@ -919,13 +915,13 @@ input[type=submit]:hover {
                         type: "POST",
                         headers: {
                             'Content-Type': 'text/plain',
-                            'restaurantname': 'Restaurant_Name',
+                            'restaurantname': 'Restaurant_Name_',
                             'restaurantid': '123',
-                            'customeremail': input
+                            'customerphone': input
                         }
                     });
                 }else{
-                    document.getElementById("email").style.borderColor = "red";
+                    document.getElementById("phone").style.borderColor = "red";
                 }
             }
 
@@ -945,7 +941,7 @@ input[type=submit]:hover {
             }
 
             // Set cookie in order to avoid showing modal multiple times within same hour
-            checkCookie();
+            //checkCookie();
   </script>
   <div class="footer">
    Menu made using

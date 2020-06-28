@@ -262,9 +262,9 @@ def render(data, restaurant_name, output_id):
                 x.querySelector('.collapsible').classList.toggle('expand');
             }}
 
-            function validateEmail(email) {{
-                const re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{{1,3}}\.[0-9]{{1,3}}\.[0-9]{{1,3}}\.[0-9]{{1,3}}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{{2,}}))$/;
-                return re.test(email);
+            function validatePhone(phone) {{
+                const re = /^[+]*[(]{{0,1}}[0-9]{{1,4}}[)]{{0,1}}[-\s\./0-9]*$/;
+                return re.test(phone);
             }}
 
             function setCookie(cname, exhours) {{
@@ -300,9 +300,9 @@ def render(data, restaurant_name, output_id):
             }}
 
             // Tracking function
-            function sendEmail(){{
-                var input = document.getElementById("email").value;
-                if (validateEmail(input)) {{
+            function sendPhone(){{
+                var input = document.getElementById("phone").value;
+                if (validatePhone(input)) {{
 
                     // Hide modal
                     modal.style.display = "none";
@@ -315,11 +315,11 @@ def render(data, restaurant_name, output_id):
                             'Content-Type': 'text/plain',
                             'restaurantname': '{}',
                             'restaurantid': '{}',
-                            'customeremail': input
+                            'customerphone': input
                         }}
                     }});
                 }}else{{
-                    document.getElementById("email").style.borderColor = "red";
+                    document.getElementById("phone").style.borderColor = "red";
                 }}
             }}
 
@@ -375,19 +375,21 @@ def render_modal(restaurant_name):
         <div class="modal">
             <div class="modal-content">
                 <div class="modal-header">
-                    <a href="#close" class="close-btn">&times;</a>
-                    <div class="modal-header-text">WARNING</div>
+                    <div class="close-btn">x</div>
+                    <div class="modal-header-text">COVID-19</div>
                 </div>
                 <div class="modal-body">
                     <div class="modal-text">
-                        In {} we want to help to you stay away from the COVID 19. Insert your email if you want to receive a warning in case someone infected attended our restaurant the same day. We will delete your data after incubation time!
+                        At {} we want to keep you safe and free of coronavirus. If you want to receive an SMS in case of detecting a positive case the same day that you are in the restaurant, add your number here below. Your data will be deleted after the incubation period.
                     </div>
-                    <input type="text" id="email" placeholder="Your email..."><br><br>
+                    <div class="modal-num">
+                        <input type="tel" id="phone" placeholder="+00555000555">
+                    </div>
                 </div>
                 <div class="modal-footer">
                     <div
                         class="modal-footer-text"
-                        onClick="sendEmail()">
+                        onClick="sendPhone()">
                             Add me to tracking list
                     </div>
                 </div>
