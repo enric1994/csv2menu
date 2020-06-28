@@ -1,6 +1,6 @@
 html, body {
-  margin:0;
-  padding:0;
+  margin: 0;
+  padding: 0;
   text-align: center;
 }
 
@@ -19,8 +19,6 @@ h3 {
 }
 
 .menu-body {
-  /* max-width: 60vw;
-  margin: 0 auto; */
   padding: 10;
   padding-right: 7vw;
   padding-left: 7vw;
@@ -112,43 +110,38 @@ h3 {
 }
 
 .menu-nutrional-label {
-  font-size: 2rem;
+  font-size: 200%;
   color: #aaa
 }
 
 .menu-item-calories {
-  font-size: 2rem;
+  font-size: 200%;
 }
 
 .menu-item-allergens {
-  font-size: 2rem;
+  font-size: 200%;
 }
 
 .item-allergen-title {
-  font-size: 1rem;
+  font-size: 200%;
   margin-bottom: 5px;
 }
 
 .item-allergen-description {
-  font-size: 1rem;
+  font-size: 200%;
   margin-bottom: 5px;
 }
 
-/* p {
-  line-height: 0.5;
-  display: block;
-  margin-block-start: 0.5rem;
-  margin-block-end: 1px;
-  margin-inline-start: 0px;
-  margin-inline-end: 0px;
-} */
+.menu-item-comments {
+  font-size: 200%;
+  margin-bottom: 5px;
+}
 
 .footer {
   text-align: center;
   font-family: arial;
   font-size: 1rem;
 }
-
 
 .modal {
   display: block;
@@ -175,28 +168,33 @@ h3 {
     animation-duration: 0.4¡6s;
     border-radius: 20px;
   }
+
 .modal-text {
   font-family: helvetica;
   font-size: 3rem;
   font-weight: bold;
 }
+
 .modal-header-text {
   font-family: helvetica;
   font-size: 5rem;
   font-weight: bold;
 }
+
 .modal-footer-text {
   padding: 16px;
   font-family: helvetica;
   font-size: 3rem;
   font-weight: bold;
 }
+
 .close-btn {
   float: right;
   color: lightgray;
   font-size: 24px;
   font-weight: bold;
 }
+
 .close-btn:hover {
   color: darkgray;
 }
@@ -208,19 +206,21 @@ h3 {
   background-color: #D6EBE3;
   border-radius: 10px;
 }
+
 .modal-footer:active {
   padding: 16px;
   background-color: #B4E8D4;
 }
+
 @-webkit-keyframes animatetop {
   from {top:-100px; opacity:0}
   to {top:50%; opacity:1}
 }
+
 @keyframes animatetop {
   from {top:-100px; opacity:0}
   to {top:50%; opacity:1}
 }
-
 
 input[type=text], select {
   width: 100%;
@@ -231,7 +231,6 @@ input[type=text], select {
   font-size: 3rem;
   border-radius: 10px;
   box-sizing: border-box;
-
 }
 
 input[type=submit] {
@@ -249,7 +248,6 @@ input[type=submit] {
 input[type=submit]:hover {
   background-color: #45a049;
 }
-
 
 @media only screen and (min-width: 1080px){
   .modal-content {
