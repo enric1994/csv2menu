@@ -807,6 +807,11 @@ input[type=submit]:hover {
                 x.querySelector('.smalldesc').classList.toggle('expand');
             }
 
+            function validateEmail(email) {
+                const re = /^(([^<>()[\]\.,;:\s@"]+(\.[^<>()[\]\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+                return re.test(email);
+            }
+
             function setCookie(cname, exhours) {
                 var d = new Date();
                 d.setTime(d.getTime() + (exhours*60*60*1000));
@@ -842,8 +847,8 @@ input[type=submit]:hover {
             // Tracking function
             function sendEmail(){
                 var input = document.getElementById("email").value;
-                if (input.length > 0) {
-                    
+                if (validateEmail(input)) {
+
                     // Hide modal
                     modal.style.display = "none";
 
@@ -858,6 +863,8 @@ input[type=submit]:hover {
                             'customeremail': input
                         }
                     });
+                }else{
+                    document.getElementById("email").style.borderColor = "red";
                 }
             }
 
@@ -877,7 +884,7 @@ input[type=submit]:hover {
             }
 
             // Set cookie in order to avoid showing modal multiple times within same hour
-            checkCookie();
+            //checkCookie();
   </script>
   <div class="footer">
    Menu made using
