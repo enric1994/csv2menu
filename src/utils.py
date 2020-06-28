@@ -228,6 +228,9 @@ def render(data, restaurant_name, output_id):
                             <div class="menu-item-allergens">
                                 {}
                             </div>
+                            <div class="menu-item-comments">
+                                <i> {} </i>
+                            </div>
                         </div>
                     </div>
                     """.format(
@@ -239,7 +242,7 @@ def render(data, restaurant_name, output_id):
                         nutrition_label,
                         item_calories,
                         html_allergens,
-                        # item_comments
+                        item_comments
                     )
 
         # HTML thematic break
