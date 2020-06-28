@@ -70,7 +70,7 @@ def render(data, restaurant_name, output_id):
             <meta name="viewport" content="width=device-width, initial-scale=1.0">
             <div class="menu-body">
         """
-    
+
     # Restaurant name
     html += """
         <div>
@@ -253,13 +253,18 @@ def render(data, restaurant_name, output_id):
     # Close menu-body
     html += "</div>"
 
-    # Add function to expand item
+    # Add javascript functions
     html += """
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <script>
 
             function clickItem(x) {{
                 x.querySelector('.collapsible').classList.toggle('expand');
+            }}
+
+            function validateEmail(email) {{
+                const re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{{1,3}}\.[0-9]{{1,3}}\.[0-9]{{1,3}}\.[0-9]{{1,3}}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{{2,}}))$/;
+                return re.test(email);
             }}
 
             function setCookie(cname, exhours) {{
@@ -297,8 +302,8 @@ def render(data, restaurant_name, output_id):
             // Tracking function
             function sendEmail(){{
                 var input = document.getElementById("email").value;
-                if (input.length > 0) {{
-                    
+                if (validateEmail(input)) {{
+
                     // Hide modal
                     modal.style.display = "none";
 
@@ -313,6 +318,8 @@ def render(data, restaurant_name, output_id):
                             'customeremail': input
                         }}
                     }});
+                }}else{{
+                    document.getElementById("email").style.borderColor = "red";
                 }}
             }}
 
@@ -363,7 +370,7 @@ def render(data, restaurant_name, output_id):
 
 def render_modal(restaurant_name):
     """ Render Modal """
-    
+
     return """
         <div class="modal">
             <div class="modal-content">
