@@ -315,7 +315,8 @@ def render(data, restaurant_name, output_id):
                             'Content-Type': 'text/plain',
                             'restaurantname': '{}',
                             'restaurantid': '{}',
-                            'customerphone': input
+                            'customerphone': input,
+                            'locale': navigator.language
                         }}
                     }});
                 }}else{{

@@ -917,7 +917,8 @@ input[type=submit]:hover {
                             'Content-Type': 'text/plain',
                             'restaurantname': 'Restaurant_Name_',
                             'restaurantid': '123',
-                            'customerphone': input
+                            'customerphone': input,
+                            'locale': navigator.language
                         }
                     });
                 }else{
@@ -941,7 +942,7 @@ input[type=submit]:hover {
             }
 
             // Set cookie in order to avoid showing modal multiple times within same hour
-            //checkCookie();
+            checkCookie();
   </script>
   <div class="footer">
    Menu made using
