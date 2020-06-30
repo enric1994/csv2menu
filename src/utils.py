@@ -53,6 +53,7 @@ def render(data, restaurant_name, output_id):
         <!DOCTYPE html>
         <html lang="en">
             <head>
+            <link rel="shortcut icon" href="https://img.icons8.com/wired/64/000000/restaurant-menu.png">
             <title>GoDigital Menu</title>
             </head>
             <body>
