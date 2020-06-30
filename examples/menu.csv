@@ -1,12 +1,12 @@
 available,name,description,price,category,subcategory,comments,calories (kCal),vegan,vegetarian,allergy_gluten,allergy_crustaceans,allergy_eggs,allergy_fish,allergy_peanuts,allergy_soybeans,allergy_milk,allergy_nuts,allergy_celery,allergy_mustard,allergy_sesame,allergy_sulphites,allergy_lupin,allergy_molluscs
-YES,Seafood Chowder,Crusty bread,,Menu of the day (10 euros),Starter,,230,YES,YES,NO,NO,NO,NO,NO,NO,NO,NO,NO,NO,NO,NO,NO,NO
-YES,Chicken Caesar Salad,"Focaccia croutons, Parmesan shavings, cos lettuce & Caesar dressing",,Menu of the day (10 euros),Starter,,120,NO,NO,YES,NO,NO,NO,NO,NO,NO,NO,NO,NO,NO,NO,NO,NO
-YES,Homemade Soup of the Day,Irish soda bread,,Menu of the day (10 euros),Starter,,,YES,YES,NO,YES,NO,NO,NO,NO,NO,NO,NO,NO,NO,NO,NO,NO
-YES,Cheesy Tomato Pasta,"Penne pasta with tomato sauce, sun-ripened tomatoes, Mediterranean herbs & Parmesan cheese",,Menu of the day (10 euros),Main courses,Very spicy,300,NO,NO,NO,NO,NO,NO,NO,NO,NO,NO,NO,NO,NO,NO,NO,NO
-NO,Baked Fish Tails,Goujons  of cod with mushy peas and a side of your choice,,Menu of the day (10 euros),Main courses,,,NO,NO,NO,NO,YES,YES,YES,YES,NO,NO,NO,NO,NO,NO,NO,NO
-YES,Bangers and Mash,"Grilled pork sausages, creamy mash potato & gravy",,Menu of the day (10 euros),Main courses,,200,NO,NO,NO,NO,NO,NO,NO,NO,NO,NO,NO,NO,NO,NO,NO,NO
-YES,Fruit of the season,,,Menu of the day (10 euros),Dessert,Ask to the waiter for additional information,,NO,NO,NO,NO,NO,NO,NO,NO,NO,NO,NO,NO,NO,NO,NO,NO
-NO,Ice Cream,"Chocolate, mint or lemon",,Menu of the day (10 euros),Dessert,,,NO,NO,NO,NO,NO,NO,NO,NO,NO,NO,NO,NO,NO,NO,NO,NO
+YES,Seafood Chowder,Crusty bread,,Daily Specials (10 euros),Starter,Served with bread and butter,230,YES,YES,NO,YES,NO,YES,NO,NO,NO,NO,NO,NO,NO,NO,NO,NO
+YES,Chicken Caesar Salad,"Focaccia croutons, Parmesan shavings, cos lettuce & Caesar dressing",,Daily Specials (10 euros),Starter,,120,NO,NO,YES,NO,NO,NO,NO,NO,NO,NO,NO,NO,NO,NO,NO,NO
+YES,Homemade Soup of the Day,Irish soda bread,,Daily Specials (10 euros),Starter,,,YES,YES,NO,YES,NO,NO,NO,NO,NO,NO,NO,NO,NO,NO,NO,NO
+YES,Cheesy Tomato Pasta,"Penne pasta with tomato sauce, sun-ripened tomatoes, Mediterranean herbs & Parmesan cheese",,Daily Specials (10 euros),Main courses,Very spicy,300,NO,NO,NO,NO,NO,NO,NO,NO,NO,NO,NO,NO,NO,NO,NO,NO
+NO,Baked Fish Tails,Goujons  of cod with mushy peas and a side of your choice,,Daily Specials (10 euros),Main courses,,,NO,NO,NO,NO,YES,YES,YES,YES,NO,NO,NO,NO,NO,NO,NO,NO
+YES,Bangers and Mash,"Grilled pork sausages, creamy mash potato & gravy",,Daily Specials (10 euros),Main courses,,200,NO,NO,NO,NO,NO,NO,NO,NO,NO,NO,NO,NO,NO,NO,NO,NO
+YES,Fruit of the season,,,Daily Specials (10 euros),Dessert,Ask to the waiter for additional information,,NO,NO,NO,NO,NO,NO,NO,NO,NO,NO,NO,NO,NO,NO,NO,NO
+NO,Ice Cream,"Chocolate, mint or lemon",,Daily Specials (10 euros),Dessert,,,NO,NO,NO,NO,NO,NO,NO,NO,NO,NO,NO,NO,NO,NO,NO,NO
 YES,Broccoli Chicken,Sliced chicken and broccoli in a tasty garlic sauce.,13,House Special,Chicken,,400,NO,NO,NO,NO,NO,NO,NO,NO,NO,NO,NO,NO,NO,NO,NO,NO
 YES,Sweet & Sour Chicken,Diced chicken breast lightly stir-fried with a tangy sweet and spice sauce,13.5,House Special,Chicken,,,NO,NO,NO,NO,NO,NO,NO,NO,NO,NO,NO,NO,NO,NO,NO,NO
 YES,Manchurian Chicken,Tender pieces of chicken in a savory Manchurian sauce.,13,House Special,Chicken,,230,NO,NO,NO,NO,NO,NO,NO,NO,NO,NO,NO,NO,NO,NO,NO,NO

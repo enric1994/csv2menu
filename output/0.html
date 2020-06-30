@@ -350,7 +350,7 @@ input[type=submit]:hover {
     </div>
     <div class="modal-body">
      <div class="modal-text">
-      At Restaurant_Name_ we want to keep you safe and free of coronavirus. If you want to receive an SMS in case of detecting a positive case the same day that you are in the restaurant, add your number here below. Your data will be deleted after the incubation period.
+      At Demo Restaurant we want to keep you safe and free of coronavirus. If you want to receive an SMS in case of detecting a positive case the same day that you are in the restaurant, add your number here below. Your data will be deleted after the incubation period.
      </div>
      <div class="modal-num">
       <input id="phone" placeholder="+00555000555" type="tel"/>
@@ -368,7 +368,7 @@ input[type=submit]:hover {
   <div class="menu-body">
    <div>
     <h1>
-     Restaurant_Name_
+     Demo Restaurant
     </h1>
    </div>
    <div class="menu-section">
@@ -396,6 +396,9 @@ input[type=submit]:hover {
     <div class="collapsible">
      <div class="menu-item-comments">
       <i>
+       <i>
+        Served with bread and butter
+       </i>
       </i>
      </div>
      <small class="menu-nutrional-label">
@@ -405,6 +408,19 @@ input[type=submit]:hover {
       230 kCal
      </div>
      <div class="menu-item-allergens">
+      <span>
+       <strong>
+        C:
+       </strong>
+       Crustaceans
+      </span>
+      <br/>
+      <span>
+       <strong>
+        F:
+       </strong>
+       Fish
+      </span>
      </div>
     </div>
    </div>
@@ -947,8 +963,8 @@ input[type=submit]:hover {
                         type: "POST",
                         headers: {
                             'Content-Type': 'text/plain',
-                            'restaurantname': 'Restaurant_Name_',
-                            'restaurantid': '123',
+                            'restaurantname': 'Demo Restaurant',
+                            'restaurantid': '0',
                             'customerphone': input,
                             'locale': navigator.language
                         }
@@ -983,7 +999,7 @@ input[type=submit]:hover {
    </a>
   </div>
   <div style="color:white;">
-   Menu ID: 123
+   Menu ID: 0
   </div>
  </body>
 </html>

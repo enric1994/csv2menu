@@ -191,7 +191,7 @@ def render(data, restaurant_name, output_id):
 
                 # Comments: to be added
                 item_comments = escape(item["comments"])
-                item_comments = "Comments by owner: <i> {} </i>".format(item_comments) if item_comments else ''
+                item_comments = "<i> {} </i>".format(item_comments) if item_comments else ''
 
                 # Calories
                 item_calories = format_calories(item["calories (kCal)"])
@@ -200,11 +200,11 @@ def render(data, restaurant_name, output_id):
                 html_allergens = format_allergens(item)
 
                 # Click here
-                click_here = 'Tap on dish for nutritional information or comments' \
+                click_here = 'Tap on dish for nutritional information' \
                     if item_comments or item_calories or html_allergens else ''
 
                 # Label for Nutrition
-                nutrition_label = 'Nutrition Label' if click_here else ''
+                nutrition_label = 'Nutrition Label:' if click_here else ''
 
                 # Add item
                 html += """
@@ -222,6 +222,9 @@ def render(data, restaurant_name, output_id):
                             {}
                         </small>
                         <div class="collapsible">
+                            <div class="menu-item-comments">
+                                <i> {} </i>
+                            </div>
                             <small class="menu-nutrional-label">
                                 {}
                             </small>
@@ -231,9 +234,7 @@ def render(data, restaurant_name, output_id):
                             <div class="menu-item-allergens">
                                 {}
                             </div>
-                            <div class="menu-item-comments">
-                                <i> {} </i>
-                            </div>
+                            
                         </div>
                     </div>
                     """.format(
@@ -242,10 +243,10 @@ def render(data, restaurant_name, output_id):
                         item_price,
                         item_description,
                         click_here,
+                        item_comments,
                         nutrition_label,
                         item_calories,
-                        html_allergens,
-                        item_comments
+                        html_allergens
                     )
 
         # HTML thematic break
@@ -490,7 +491,7 @@ def format_allergens(item):
 
     # Format output
     values_formatted = [
-        "<span> {}: {} </span>".format(allergens_prefix[value], value) for value in values ]
+        "<span> <strong>{}:</strong> {} </span>".format(allergens_prefix[value], value) for value in values ]
 
     # Convert to string
     value = '<br>'.join(values_formatted)
