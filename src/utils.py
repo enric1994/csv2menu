@@ -469,20 +469,20 @@ def format_allergens(item):
     """ Format allergens """
 
     allergens = [
-        ( escape(item["allergy_gluten"]), "Gluten" ),
-        ( escape(item["allergy_crustaceans"]), "Crustaceans" ),
-        ( escape(item["allergy_eggs"]), "Eggs" ),
-        ( escape(item["allergy_fish"]), "Fish" ),
-        ( escape(item["allergy_peanuts"]), "Peanuts" ),
-        ( escape(item["allergy_soybeans"]), "Soybeans" ),
-        ( escape(item["allergy_milk"]), "Milk" ),
-        ( escape(item["allergy_nuts"]), "Nuts" ),
-        ( escape(item["allergy_celery"]), "Celery" ),
-        ( escape(item["allergy_mustard"]), "Mustard" ),
-        ( escape(item["allergy_sesame"]), "Sesame Seeds" ),
-        ( escape(item["allergy_sulphites"]), "Sulphites" ),
-        ( escape(item["allergy_lupin"]), "Lupin" ),
-        ( escape(item["allergy_molluscs"]), "Molluscs" ),
+        ( escape(item["allergen_gluten"]), "Gluten" ),
+        ( escape(item["allergen_crustaceans"]), "Crustaceans" ),
+        ( escape(item["allergen_eggs"]), "Eggs" ),
+        ( escape(item["allergen_fish"]), "Fish" ),
+        ( escape(item["allergen_peanuts"]), "Peanuts" ),
+        ( escape(item["allergen_soybeans"]), "Soybeans" ),
+        ( escape(item["allergen_milk"]), "Milk" ),
+        ( escape(item["allergen_nuts"]), "Nuts" ),
+        ( escape(item["allergen_celery"]), "Celery" ),
+        ( escape(item["allergen_mustard"]), "Mustard" ),
+        ( escape(item["allergen_sesame"]), "Sesame Seeds" ),
+        ( escape(item["allergen_sulphites"]), "Sulphites" ),
+        ( escape(item["allergen_lupin"]), "Lupin" ),
+        ( escape(item["allergen_molluscs"]), "Molluscs" ),
     ]
 
     # Extract true values

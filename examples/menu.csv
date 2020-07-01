@@ -1,4 +1,4 @@
-available,name,description,price,category,subcategory,comments,calories (kCal),vegan,vegetarian,allergy_gluten,allergy_crustaceans,allergy_eggs,allergy_fish,allergy_peanuts,allergy_soybeans,allergy_milk,allergy_nuts,allergy_celery,allergy_mustard,allergy_sesame,allergy_sulphites,allergy_lupin,allergy_molluscs
+available,name,description,price,category,subcategory,comments,calories (kCal),vegan,vegetarian,allergen_gluten,allergen_crustaceans,allergen_eggs,allergen_fish,allergen_peanuts,allergen_soybeans,allergen_milk,allergen_nuts,allergen_celery,allergen_mustard,allergen_sesame,allergen_sulphites,allergen_lupin,allergen_molluscs
 YES,Seafood Chowder,Crusty bread,,Daily Specials (10 euros),Starter,Served with bread and butter,230,YES,YES,NO,YES,NO,YES,NO,NO,NO,NO,NO,NO,NO,NO,NO,NO
 YES,Chicken Caesar Salad,"Focaccia croutons, Parmesan shavings, cos lettuce & Caesar dressing",,Daily Specials (10 euros),Starter,,120,NO,NO,YES,NO,NO,NO,NO,NO,NO,NO,NO,NO,NO,NO,NO,NO
 YES,Homemade Soup of the Day,Irish soda bread,,Daily Specials (10 euros),Starter,,,YES,YES,NO,YES,NO,NO,NO,NO,NO,NO,NO,NO,NO,NO,NO,NO
