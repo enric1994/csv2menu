@@ -38,6 +38,9 @@ allergens_prefix = {
 def render(data, restaurant_name, output_id):
     """ Render HTML """
 
+    # Escape restaurant name
+    restaurant_name = escape(restaurant_name)
+
     # Read CSS file
     with open(CSS_FILEPATH) as f:
         css = f.read()
