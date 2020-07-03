@@ -383,7 +383,7 @@ def render_modal(restaurant_name):
                 </div>
                 <div class="modal-body">
                     <div class="modal-text">
-                        At {} we want to keep you safe and free of coronavirus. If you want to receive an SMS in case of detecting a positive case the same day that you are in the restaurant, add your number here below. Your data will be deleted after the incubation period.
+                        Please provide your mobile number for Contact Tracing purposes. Should {} receive notification of a Covid case from a customer who was present on the same date as you, we will text to inform you of the 'date & time' they were present (no personal information will be used). We will delete all numbers after the 14-day notification period.
                     </div>
                     <div class="modal-num">
                         <input type="tel" id="phone" placeholder="+00555000555">
