@@ -12,8 +12,10 @@ import csv
 
 
 # Static path
-STATIC_PATH = os.path.abspath(os.path.join(os.path.dirname(os.path.abspath(__file__)), "static"))
+STATIC_PATH = abspath(join(dirname(abspath(__file__)), "static"))
+
 CSS_FILEPATH = join(STATIC_PATH, 'css', 'style.css')
+
 OUTPUT_PATH = "/output/"
 
 # Allergens prefix
@@ -237,7 +239,7 @@ def render(data, restaurant_name, output_id):
                             <div class="menu-item-allergens">
                                 {}
                             </div>
-                            
+
                         </div>
                     </div>
                     """.format(
@@ -261,6 +263,8 @@ def render(data, restaurant_name, output_id):
     # Add javascript functions
     html += """
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.3/js/intlTelInput.min.js"></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.3/css/intlTelInput.min.css">
         <script>
 
             function clickItem(x) {{
@@ -301,14 +305,15 @@ def render(data, restaurant_name, output_id):
                     modal.style.display = "none";
                 }} else {{
                   setCookie("modal", 1);
+
                 }}
             }}
 
             // Tracking function
             function sendPhone(){{
-                var input = document.getElementById("phone").value;
-                if (validatePhone(input)) {{
-
+                if (iti.isValidNumber()) {{
+                    var ph = iti.getNumber();
+                    console.log(ph);
                     // Hide modal
                     modal.style.display = "none";
 
@@ -320,7 +325,7 @@ def render(data, restaurant_name, output_id):
                             'Content-Type': 'text/plain',
                             'restaurantname': '{}',
                             'restaurantid': '{}',
-                            'customerphone': input,
+                            'customerphone': ph,
                             'locale': navigator.language
                         }}
                     }});
@@ -328,6 +333,9 @@ def render(data, restaurant_name, output_id):
                     document.getElementById("phone").style.borderColor = "red";
                 }}
             }}
+
+
+
 
             // Modal functions
             let modal = document.querySelector(".modal")
@@ -346,9 +354,21 @@ def render(data, restaurant_name, output_id):
 
             // Set cookie in order to avoid showing modal multiple times within same hour
             checkCookie();
+            var input = document.querySelector("#phone");
+            var iti = window.intlTelInput(input, {{
+                initialCountry: "ie",
+                preferredCountries: ["ie", "gb", "es"],
+                separateDialCode:true,
+                utilsScript: "https://cdn.jsdelivr.net/npm/intl-tel-input@17.0.3/build/js/utils.js"
+            }});
+
+
 
         </script>
     """.format(restaurant_name, output_id)
+
+
+
 
     # Footer
     html += """
@@ -389,7 +409,7 @@ def render_modal(restaurant_name):
                         Please provide your mobile number for Contact Tracing purposes. Should {} receive notification of a Covid case from a customer who was present on the same date as you, we will text to inform you of the 'date & time' they were present (no personal information will be used). We will delete all numbers after the 14-day notification period.
                     </div>
                     <div class="modal-num">
-                        <input type="tel" id="phone" placeholder="+00555000555">
+                        <input type="tel" id="phone">
                     </div>
                 </div>
                 <div class="modal-footer">
