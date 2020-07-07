@@ -298,7 +298,7 @@ def render_modal(restaurant_name):
             <div class="modal-content">
                 <div class="modal-header">
                     <div class="close-btn">
-                        x
+                        &#8855;
                     </div>
                     <div class="modal-header-text">COVID-19</div>
                 </div>
