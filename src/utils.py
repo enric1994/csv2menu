@@ -166,7 +166,7 @@ def render(data, restaurant_name, output_id):
                     <div class="menu-section">
                         <h2 class="menu-section-title"> {} </h2>
                     </div>
-                    """.format(category)
+                    """.format(format_euro(escape(category)))
 
                 used_categories.add(category)
 
@@ -178,7 +178,7 @@ def render(data, restaurant_name, output_id):
                     <div class="menu-section">
                         <h3 class="menu-subsection-title"> {} </h3>
                     </div>
-                    """.format(item_subcategory)
+                    """.format(format_euro(escape(item_subcategory)))
 
                 used_subcategories.add(item_subcategory)
 
@@ -186,16 +186,16 @@ def render(data, restaurant_name, output_id):
             if valid_category:
 
                 # Price
-                item_price = format_price(item["price"])
+                item_price = format_euro(format_price(item["price"]))
 
                 # Description
-                item_description = escape(item["description"])
+                item_description = format_euro(escape(item["description"]))
 
                 # Suitable For
                 item_suitable = format_suitable(item)
 
                 # Comments: to be added
-                item_comments = escape(item["comments"])
+                item_comments = format_euro(escape(item["comments"]))
                 item_comments = "<i> {} </i>".format(item_comments) if item_comments else ''
 
                 # Calories
@@ -260,115 +260,8 @@ def render(data, restaurant_name, output_id):
     # Close menu-body
     html += "</div>"
 
-    # Add javascript functions
-    html += """
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.3/js/intlTelInput.min.js"></script>
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.3/css/intlTelInput.min.css">
-        <script>
-
-            function clickItem(x) {{
-                x.querySelector('.collapsible').classList.toggle('expand');
-            }}
-
-            function validatePhone(phone) {{
-                const re = /^[+]*[(]{{0,1}}[0-9]{{1,4}}[)]{{0,1}}[-\s\./0-9]*$/;
-                return re.test(phone);
-            }}
-
-            function setCookie(cname, exhours) {{
-                var d = new Date();
-                d.setTime(d.getTime() + (exhours*60*60*1000));
-                var expires = "expires="+ d.toUTCString();
-                var cookiee = cname + "=" + "true" + "," + expires + ",path=/";
-                document.cookie = cookiee;
-            }}
-
-            function getCookie(cname) {{
-                var name = cname + "=";
-                var ca = document.cookie.split(';');
-                for(var i = 0; i < ca.length; i++) {{
-                    var c = ca[i];
-                    while (c.charAt(0) == ' ') {{
-                      c = c.substring(1);
-                    }}
-                    if (c.indexOf(name) == 0) {{
-                      return c.substring(name.length, c.length);
-                    }}
-                }}
-                return "";
-            }}
-
-            function checkCookie() {{
-                var cookie_modal = getCookie("modal");
-                if (cookie_modal != "") {{
-                    modal.style.display = "none";
-                }} else {{
-                  setCookie("modal", 1);
-
-                }}
-            }}
-
-            // Tracking function
-            function sendPhone(){{
-                if (iti.isValidNumber()) {{
-                    var ph = iti.getNumber();
-                    console.log(ph);
-                    // Hide modal
-                    modal.style.display = "none";
-
-                    // Add email to database
-                    $.ajax({{
-                        url: "https://api.godigital.menu/tracking",
-                        type: "POST",
-                        headers: {{
-                            'Content-Type': 'text/plain',
-                            'restaurantname': '{}',
-                            'restaurantid': '{}',
-                            'customerphone': ph,
-                            'locale': navigator.language
-                        }}
-                    }});
-                }}else{{
-                    document.getElementById("phone").style.borderColor = "red";
-                }}
-            }}
-
-
-
-
-            // Modal functions
-            let modal = document.querySelector(".modal")
-            let closeBtn = document.querySelector(".close-btn")
-
-            closeBtn.onclick = function(){{
-              modal.style.display = "none";
-            }}
-
-            window.onclick = function(e){{
-              if(e.target == modal){{
-                modal.style.display = "none";
-
-              }}
-            }}
-
-            // Set cookie in order to avoid showing modal multiple times within same hour
-            checkCookie();
-            var input = document.querySelector("#phone");
-            var iti = window.intlTelInput(input, {{
-                initialCountry: "ie",
-                preferredCountries: ["ie", "gb", "es"],
-                separateDialCode:true,
-                utilsScript: "https://cdn.jsdelivr.net/npm/intl-tel-input@17.0.3/build/js/utils.js"
-            }});
-
-
-
-        </script>
-    """.format(restaurant_name, output_id)
-
-
-
+    # Add Javascript code
+    html += add_js_code(restaurant_name, output_id)
 
     # Footer
     html += """
@@ -389,6 +282,9 @@ def render(data, restaurant_name, output_id):
     # Prettify it
     html = soup.prettify()
 
+    # Format euro in the whole HTML
+    html = format_euro(html)
+
     # Write it!
     with open(os.path.join(OUTPUT_PATH, output_id) + '.html', "w") as html_file:
         html_file.write(html)
@@ -401,7 +297,9 @@ def render_modal(restaurant_name):
         <div class="modal">
             <div class="modal-content">
                 <div class="modal-header">
-                    <div class="close-btn">x</div>
+                    <div class="close-btn">
+                        x
+                    </div>
                     <div class="modal-header-text">COVID-19</div>
                 </div>
                 <div class="modal-body">
@@ -413,9 +311,7 @@ def render_modal(restaurant_name):
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <div
-                        class="modal-footer-text"
-                        onClick="sendPhone()">
+                    <div class="modal-footer-text" onClick="sendPhone()">
                             Add me to tracking list
                     </div>
                 </div>
@@ -522,39 +418,116 @@ def format_allergens(item):
     # Escape when it is a String
     return value
 
-    # # HTML output
-    # # Format output in two columns with Bootstrap
-    # first_half = values[:len(values) // 2]
-    # second_half = values[len(values) // 2:]
-    # _html = """
-    #     <div class="row">
-    # """
-    # for _list in [ first_half, second_half ]:
-    #     _html += """
-    #         <div class="col-md-6 col-sm-6 col-xs-6">
-    #     """
-    #     for value in _list:
-    #         _html += """
-    #             <div class="row">
-    #                 <div class="col-md-2 col-sm-3 col-xs-3">
-    #                     <p class="item-allergen-title">
-    #                         {}
-    #                     </p>
-    #                 </div>
-    #                 <div class="col-md-10 col-sm-9 col-xs-9">
-    #                     <p class="item-allergen-description">
-    #                         {}
-    #                     </p>
-    #                 </div>
-    #             </div>
-    #         """.format(
-    #             allergens_prefix[value],
-    #             value
-    #         )
-    #     _html += """
-    #         </div>
-    #     """
-    # _html += """
-    #     </div>
-    # """
-    # return _html
+
+def format_euro(value):
+    """ Format euro """
+
+    # Replace € for html rendering
+    value = value.replace('€', '&euro;')
+
+    return value
+
+
+def add_js_code(restaurant_name, output_id):
+    """ Javascript code """
+
+    return """
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.3/js/intlTelInput.min.js"></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.3/css/intlTelInput.min.css">
+        <script>
+
+            function clickItem(x) {{
+                x.querySelector('.collapsible').classList.toggle('expand');
+            }}
+
+            function validatePhone(phone) {{
+                const re = /^[+]*[(]{{0,1}}[0-9]{{1,4}}[)]{{0,1}}[-\s\./0-9]*$/;
+                return re.test(phone);
+            }}
+
+            function setCookie(cname, exhours) {{
+                var d = new Date();
+                d.setTime(d.getTime() + (exhours*60*60*1000));
+                var expires = "expires="+ d.toUTCString();
+                var cookiee = cname + "=" + "true" + "," + expires + ",path=/";
+                document.cookie = cookiee;
+            }}
+
+            function getCookie(cname) {{
+                var name = cname + "=";
+                var ca = document.cookie.split(';');
+                for(var i = 0; i < ca.length; i++) {{
+                    var c = ca[i];
+                    while (c.charAt(0) == ' ') {{
+                      c = c.substring(1);
+                    }}
+                    if (c.indexOf(name) == 0) {{
+                      return c.substring(name.length, c.length);
+                    }}
+                }}
+                return "";
+            }}
+
+            function checkCookie() {{
+                var cookie_modal = getCookie("modal");
+                if (cookie_modal != "") {{
+                    modal.style.display = "none";
+                }} else {{
+                  setCookie("modal", 1);
+
+                }}
+            }}
+
+            // Tracking function
+            function sendPhone(){{
+                if (iti.isValidNumber()) {{
+                    var ph = iti.getNumber();
+                    console.log(ph);
+                    // Hide modal
+                    modal.style.display = "none";
+
+                    // Add email to database
+                    $.ajax({{
+                        url: "https://api.godigital.menu/tracking",
+                        type: "POST",
+                        headers: {{
+                            'Content-Type': 'text/plain',
+                            'restaurantname': '{}',
+                            'restaurantid': '{}',
+                            'customerphone': ph,
+                            'locale': navigator.language
+                        }}
+                    }});
+                }} else {{
+                    document.getElementById("phone").style.borderColor = "red";
+                }}
+            }}
+
+            // Modal functions
+            let modal = document.querySelector(".modal")
+            let closeBtn = document.querySelector(".close-btn")
+
+            closeBtn.onclick = function(){{
+              modal.style.display = "none";
+            }}
+
+            window.onclick = function(e){{
+              if(e.target == modal){{
+                modal.style.display = "none";
+
+              }}
+            }}
+
+            // Set cookie in order to avoid showing modal multiple times within same hour
+            checkCookie();
+            var input = document.querySelector("#phone");
+            var iti = window.intlTelInput(input, {{
+                initialCountry: "ie",
+                preferredCountries: ["ie", "gb", "es"],
+                separateDialCode:true,
+                utilsScript: "https://cdn.jsdelivr.net/npm/intl-tel-input@17.0.3/build/js/utils.js"
+            }});
+
+        </script>
+    """.format(restaurant_name, output_id)
