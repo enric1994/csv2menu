@@ -312,7 +312,7 @@ def render_modal(restaurant_name):
                 </div>
                 <div class="modal-footer">
                     <div class="modal-footer-text" onClick="sendPhone()">
-                            Add me to tracking list
+                            Add me to contact list
                     </div>
                 </div>
             </div>
