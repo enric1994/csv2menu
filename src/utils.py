@@ -96,6 +96,8 @@ def render(data, restaurant_name, output_id):
             df = df.drop(i)
 
     # Extract Categories
+    df['category'] = df['category'].str.lower()
+    df['subcategory'] = df['subcategory'].str.lower()
     categories = df['category'].unique().tolist()
     categories = [ c for c in categories if not c == '']
 
@@ -110,7 +112,7 @@ def render(data, restaurant_name, output_id):
 
     # Only add item if at least it has category and name
     for item in raw_items:
-        category = item['category']
+        category = item['category'].lower()
         name = item['name']
         # If no category but has name (and is available), add it to orphan category ' '
         if category == '' and not name == '' and is_true(escape(item["available"])):
@@ -124,9 +126,8 @@ def render(data, restaurant_name, output_id):
         if not len(l) > 0:
             del category_to_items[key]
 
-    # Track when categories and subcategories are added (not to repeat them)
+    # Track when categories are added (not to repeat them)
     used_categories = set()
-    used_subcategories = set()
 
     # Move items with no category to the end
     desired_order_list = list(category_to_items.keys())
@@ -136,6 +137,9 @@ def render(data, restaurant_name, output_id):
         category_to_items = {k: category_to_items[k] for k in desired_order_list}
 
     for category in category_to_items.keys():
+
+        # Track when subcategories  are added (not to repeat them)
+        used_subcategories = set()
 
         # Items
         items = category_to_items[category]
@@ -166,7 +170,7 @@ def render(data, restaurant_name, output_id):
                     <div class="menu-section">
                         <h2 class="menu-section-title"> {} </h2>
                     </div>
-                    """.format(format_euro(escape(category)))
+                    """.format(format_euro(escape(' '.join([x.capitalize() for x in category.split(' ')]))))
 
                 used_categories.add(category)
 
@@ -178,7 +182,7 @@ def render(data, restaurant_name, output_id):
                     <div class="menu-section">
                         <h3 class="menu-subsection-title"> {} </h3>
                     </div>
-                    """.format(format_euro(escape(item_subcategory)))
+                    """.format(format_euro(escape(' '.join([x.capitalize() for x in item_subcategory.split(' ')]))))
 
                 used_subcategories.add(item_subcategory)
 

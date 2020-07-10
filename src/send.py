@@ -1,10 +1,10 @@
 import requests
 
-filename = '/examples/menu.csv'
+filename = '/examples/mim.csv'
 headers = {
     'Content-Type': 'text/plain',
     'restaurant_name': 'GoDigital Restaurant',
-    'output_id': '0'
+    'output_id': 'mim'
 }
 url = "http://localhost:5000/menu"
 
