@@ -308,7 +308,16 @@ def render_modal(restaurant_name):
                 </div>
                 <div class="modal-body">
                     <div class="modal-text">
-                        Please provide your mobile number for Contact Tracing purposes. Should {} receive notification of a Covid case from a customer who was present on the same date as you, we will text to inform you of the 'date & time' they were present (no personal information will be used). We will delete all numbers after the 14-day notification period.
+                        <p>
+                        Please provide your mobile number for Contact Tracing purposes. If we receive notification of a COVID-19 case from a customer who was on our premises on the same date as you, we will text to inform you of the 'date & time' they were present (no personal information will be texted).
+                        </p>
+                        <p>
+                        We will delete all numbers after the 14-day notification period. 
+                        </p>
+                        <p>
+                        (Powered by <a href="https://godigital.menu"> www.godigital.menu </a>)
+                        </p>
+
                     </div>
                     <div class="modal-num">
                         <input type="tel" id="phone">
