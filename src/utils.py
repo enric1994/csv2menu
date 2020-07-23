@@ -144,9 +144,6 @@ def render(data, restaurant_name, output_id):
         # Items
         items = category_to_items[category]
 
-        # Escape Category
-        category = escape(category)
-
         for item in items:
 
             # Name
@@ -331,7 +328,7 @@ def render_modal(restaurant_name):
             </div>
         </div>
 
-    """.format(restaurant_name)
+    """
 
 
 def is_true(value):

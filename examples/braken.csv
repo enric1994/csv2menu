@@ -1,0 +1,29 @@
+available,name,description,price,category,subcategory,comments,calories (kCal),vegan,vegetarian,allergen_gluten,allergen_crustaceans,allergen_eggs,allergen_fish,allergen_peanuts,allergen_soybeans,allergen_milk,allergen_nuts,allergen_celery,allergen_mustard,allergen_sesame,allergen_sulphites,allergen_lupin,allergen_molluscs
+YES,Homemade Soup of the Day with Guinness Brown Bread,,5.5,Starters,,,,NO,NO,NO,NO,NO,NO,NO,NO,NO,NO,NO,NO,NO,NO,NO,NO
+YES,BBQ Chicken Wings,Small €7.95    Large €10.50,,Starters,,,,NO,NO,NO,NO,NO,NO,NO,NO,NO,NO,NO,NO,NO,NO,NO,NO
+YES,Caesar Salad,Small €7.95    Large €10.50,,Starters,,,,NO,NO,NO,NO,NO,NO,NO,NO,NO,NO,NO,NO,NO,NO,NO,NO
+YES,Roast Striploin of Beef,"Served with: Carrots, Turnip, Cabbage and Potatoes",12.95,Main Course,,,,NO,NO,NO,NO,NO,NO,NO,NO,NO,NO,NO,NO,NO,NO,NO,NO
+YES,Baked Fillet of Salmon,"Served with: Carrots, Turnip, Cabbage and Potatoes",12.95,Main Course,,,,NO,NO,NO,NO,NO,YES,NO,NO,NO,NO,NO,NO,NO,NO,NO,NO
+YES,Roast Breast of Chicken with Pepper Sauce,"Served with: Carrots, Turnip, Cabbage and Potatoes",11.95,Main Course,,,,NO,NO,NO,NO,NO,NO,NO,NO,NO,NO,NO,NO,NO,NO,NO,NO
+YES,6oz Steak Baguette with Onions & Mushrooms,,13.95,Main Course,,,,NO,NO,YES,NO,NO,NO,NO,NO,NO,NO,NO,NO,NO,NO,NO,NO
+YES,Breast of Chicken Curry & Boiled Rice,,12.95,Main Course,,,,NO,NO,YES,YES,NO,NO,NO,NO,NO,NO,NO,NO,NO,NO,NO,NO
+YES,Lasagne with Side Salad,,12.95,Main Course,,,,NO,NO,YES,NO,NO,NO,NO,NO,YES,NO,NO,NO,NO,NO,NO,NO
+YES,Baked Potato with Tuna & Sweet Corn or Cheese & Bacon or Baked Beans,,9.95,Main Course,,,,NO,NO,NO,NO,NO,NO,NO,NO,NO,NO,NO,NO,NO,NO,NO,NO
+YES,Extra Filling,,1,Main Course,,,,NO,NO,NO,NO,NO,NO,NO,NO,NO,NO,NO,NO,NO,NO,NO,NO
+YES,Sausage & Chips,,6.5,Childrens' Specials,,,,NO,NO,YES,NO,NO,NO,NO,NO,NO,NO,NO,NO,NO,NO,NO,NO
+YES,Sausage Beans & Chips,,7.5,Childrens' Specials,,,,NO,NO,YES,NO,NO,NO,NO,NO,NO,NO,NO,NO,NO,NO,NO,NO
+YES,Apple Tart & Cream,,,Selection of Homemade Desserts €5.50,,,,NO,NO,YES,NO,YES,NO,NO,NO,YES,NO,NO,NO,NO,NO,NO,NO
+YES,Chocolate Brownie & Cream,,,Selection of Homemade Desserts €5.50,,,,NO,NO,NO,NO,YES,NO,NO,NO,YES,NO,NO,NO,NO,NO,NO,NO
+YES,Rice Pudding & Cream,,,Selection of Homemade Desserts €5.50,,,,NO,NO,NO,NO,NO,NO,NO,NO,YES,NO,NO,NO,NO,NO,NO,NO
+YES,Selection of Ice Cream,,,Selection of Homemade Desserts €5.50,,,,NO,NO,NO,NO,NO,NO,NO,NO,YES,NO,NO,NO,NO,NO,NO,NO
+YES,Bracken's BLT,,5.95,"Sandwiches, Wraps & Panini",,,,NO,NO,YES,NO,NO,NO,NO,NO,NO,NO,NO,NO,NO,NO,NO,NO
+YES,Chicken Pineapple Deluxe,"Chicken, Pineapple, Lettuce, Tomato with Pepper &  Tomato Relish",5.95,"Sandwiches, Wraps & Panini",,,,NO,NO,YES,NO,NO,NO,NO,NO,NO,NO,NO,NO,NO,NO,NO,NO
+YES,Cajun Chicken,"Cajun Chicken, Lettuce, Mixed Peppers, Red Onion & Cajun Mayonnaise",5.95,"Sandwiches, Wraps & Panini",,,,NO,NO,YES,NO,NO,NO,NO,NO,NO,NO,NO,NO,NO,NO,NO,NO
+YES,Chicken Goujons,"Goujons, Lettuce, Red Onions, Mixed Peppers & Sweet Chilli",5.95,"Sandwiches, Wraps & Panini",,,,NO,NO,YES,NO,NO,NO,NO,NO,NO,NO,NO,NO,NO,NO,NO,NO
+YES,Tuna melt,"Tuna, Sweet Corn, Cheese, Red Onion & Mayonnaise",5.95,"Sandwiches, Wraps & Panini",,,,NO,NO,YES,NO,NO,NO,NO,NO,NO,NO,NO,NO,NO,NO,NO,NO
+YES,Toasted Special,"Ham, Cheese, Tomato & Onion",5.7,"Sandwiches, Wraps & Panini",,,,NO,NO,YES,NO,NO,NO,NO,NO,NO,NO,NO,NO,NO,NO,NO,NO
+YES,Freshly Cut Sandwiches,,5.25,"Sandwiches, Wraps & Panini",,,,NO,NO,NO,NO,NO,NO,NO,NO,NO,NO,NO,NO,NO,NO,NO,NO
+YES,Chips,,,Side Orders € 3.75,,,,,,,,,,,,,,,,,,,
+YES,Side Salad,,,Side Orders € 3.75,,,,,,,,,,,,,,,,,,,
+YES,Tea or Coffee,,2.6,Beverages,,,,NO,NO,NO,NO,NO,NO,NO,NO,NO,NO,NO,NO,NO,NO,NO,NO
+YES,Cappucino / Espresso / Latte / Americano / Decaff Tea,,2.95,Beverages,,,,NO,NO,NO,NO,NO,NO,NO,NO,NO,NO,NO,NO,NO,NO,NO,NO
