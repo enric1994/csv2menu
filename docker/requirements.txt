@@ -1,5 +1,0 @@
-ipython
-Flask
-requests
-beautifulsoup4
-pandas

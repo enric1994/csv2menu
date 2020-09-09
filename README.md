@@ -1,20 +1,30 @@
-# Go Digital: Menu Generation
+# CSV2Menu
+Converts a CSV file into an elegant HTML to display your restaurant menu
 
-API that create an HTML Menu from a CSV
+![Input](demo.png)
 
-## Deployment
+## Features
+* Daily Specials
+* Sub-menus
+* Allergens (EU standard)
+* Calories
 
-In a terminal start the API manually:
-```
-$ git clone https://github.com/enric1994/godigital_menu.git
-$ cd godigital_menu
-$ make build
-$ make run
-$ make dev
-(container) # python app.py
-```
+## Usage
+`python3 csv2menu.py <CSV PATH> <RESTURANT NAME> <HTML OUTPUT PATH>`
 
-In another terminal test the API:
-```
-$ python3 send.py
-```
+Example:
+    
+    python3 csv2menu.py menu.csv 'Restaurant Name' output.html
+
+## Dependencies
+* Python3.8
+* beautifulsoup4
+* pandas
+
+## Credit
+Inspired by [piatto](https://github.com/dasmer/piatto)
+
+## Authors
+* [David Azcona](https://computing.dcu.ie/~dazcona/)
+* [Juanjo Nieto](https://github.com/juanjo3ns)
+* [Enric Moreu](https://enricmor.eu)
